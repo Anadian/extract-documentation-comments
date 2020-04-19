@@ -1,2 +1,3 @@
 - 2020-04-12 v0.0.0 First commit.
 - 2020-04-18 v0.0.1 Functional as an executable.
+- 2020-04-18 v0.0.2 Added NPM-version badge to README.md.

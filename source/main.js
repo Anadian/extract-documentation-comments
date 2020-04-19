@@ -86,7 +86,7 @@ function setLogger( logger ){
 * @access public
 * @description Returns a string containing only the contents of `\/** ... *\/` style documentation strings from the given source-file string.
 * @param {string} source_string - The source file, as a string, to parse for `\/** ... *\/` style documentation strings. 
-* @param {?Object} options -  [default: ]
+* @param {?Object} options - Additional run-time options. [default: {}]
 * @returns {string} A string containing all of the documentation style comments, with the comment markers themselves remove, concatenated together.
 * @throws {TypeError} `ERR_INVALID_ARG_TYPE` Thrown if `source_string` isn't a string.
 * @since v0.0.1
@@ -184,7 +184,7 @@ function getDocumentationStringFromSourceString_Test(){
 * @access public
 * @description Returns a string containing only the contents of `\/** ... *\/` style documentation strings from the given source-file buffer.
 * @param {Buffer} source_buffer - The source file, as a Node Buffer, to parse for `\/** ... *\/` style documentation strings. 
-* @param {?Object} options -  [default: ]
+* @param {?Object} options - Additional run-time options. [default: {}]
 * @returns {string} A string containing all of the documentation style comments, with the comment markers themselves remove, concatenated together.
 * @throws {TypeError} `ERR_INVALID_ARG_TYPE` Thrown if `source_buffer` isn't a Buffer.
 * @throws {Error} `ERR_INVALID_RETURN_VALUE` Thrown if `source_buffer.toString()` returns an empty string or a non-string.
@@ -302,9 +302,9 @@ function getDocumentationStringFromSourceBuffer_Test(){
 /**
 * @function main_Async
 * @async
-* @access public
+* @access private
 * @description The main function.
-* @param {?Object} options -  [default: {}]
+* @param {?Object} options - Command-line options. [default: {}]
 * @since v0.0.1
 */
 async function main_Async( options = {} ){
@@ -489,34 +489,6 @@ if(require.main === module){
 	}
 	//Main
 	if( Options.version === true ){
-		/*var source_dirname, package_path, parent_dirname, package_string, package_json;
-		//try{
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `module.filename: ${module.filename} process.cwd: ${process.cwd()}`});
-			source_dirname = Path.dirname( module.filename );
-		package_path = Path.join( source_dirname, 'package.json' );
-		try{
-			package_string = FileSystem.readFileSync( package_path, 'utf8' );
-		} catch(error){
-			parent_dirname = Path.dirname( source_dirname );
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `parent_dirname: ${parent_dirname}`});
-			package_path = Path.join( parent_dirname, 'package.json' );
-			try{
-				package_string = FileSystem.readFileSync( package_path, 'utf8' );
-			} catch(error){
-				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'warn', message: 'Unable to read package.json.'});
-			}
-		}
-		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `package_string: ${package_string}`});
-		try{
-			package_json = require('./../package.json');
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `package_json: ${package_json}`});
-		} catch(error){
-			try{
-				package_json = require( package_path );
-				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `package_json: ${package_json}`});
-			} catch(error){
-			}
-		}*/
 		console.log(PACKAGE_JSON.version);
 		quick_exit = true;
 	}
@@ -548,5 +520,7 @@ if(require.main === module){
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: 'End of execution block.'});
 } else{
 	exports.setLogger = setLogger;
+	exports.getDocumentationFromSourceString = getDocumentationFromSourceString;
+	exports.getDocumentationFromSourceBuffer = getDocumentationFromSourceBuffer;
 }
 

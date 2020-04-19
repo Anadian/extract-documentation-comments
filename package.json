@@ -1,6 +1,6 @@
 {
   "name": "extract-documentation-comments",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
@@ -38,7 +38,6 @@
     "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
     "jsdoc": "^3.6.4",
-    "jsdoc-to-markdown": "^5.0.3",
     "nyc": "^15.0.1"
   },
   "dependencies": {
@@ -48,5 +47,8 @@
     "env-paths": "^2.2.0",
     "get-stream": "^5.1.0",
     "make-dir": "^3.0.2"
+  },
+  "bin": {
+	  "extract-documentation-comments": "./source/main.js"
   }
 }

@@ -3,3 +3,4 @@
 - 2020-04-18 v0.0.2 Added NPM-version badge to README.md.
 - 2020-04-18 v0.0.3 Added public API.
 - 2020-04-19 v0.0.4 Debugging jsdoc-to-markdown.
+- 2020-04-19 v0.0.5 Cleaned up working tree, uninstalled jsdoc-to-markdown, added bin field to package.json.

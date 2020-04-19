@@ -1,0 +1,50 @@
+{
+  "name": "extract-documentation-comments",
+  "version": "0.0.1",
+  "description": "Simply extract documentation comments from a source file.",
+  "main": "source/main.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anadian/extract-documentation-comments.git"
+  },
+  "keywords": [
+    "documentation",
+    "comments",
+    "markdown",
+    "github",
+    "flavored",
+    "common",
+    "api",
+    "open",
+    "source",
+    "code",
+    "free",
+    "libre",
+    "mit",
+    "parser",
+    "generator"
+  ],
+  "author": "Anadian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Anadian/extract-documentation-comments/issues"
+  },
+  "homepage": "https://github.com/Anadian/extract-documentation-comments#readme",
+  "devDependencies": {
+    "ava": "^3.6.0",
+    "coveralls": "^3.0.11",
+    "eslint": "^6.8.0",
+    "nyc": "^15.0.1"
+  },
+  "dependencies": {
+    "application-log-winston-interface": "^1.0.5",
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "env-paths": "^2.2.0",
+    "get-stream": "^5.1.0",
+    "make-dir": "^3.0.2"
+  }
+}

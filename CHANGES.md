@@ -6,3 +6,4 @@
 - 2020-04-19 v0.0.5 Cleaned up working tree, uninstalled jsdoc-to-markdown, added bin field to package.json.
 - 2020-04-19 v0.0.6 Updated README.
 - 2020-04-26 v0.0.7 Synchronising stuff.
+- 2020-04-26 v0.0.8 Greatly improved README.md.

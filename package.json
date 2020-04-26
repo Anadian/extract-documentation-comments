@@ -50,5 +50,8 @@
   },
   "bin": {
 	  "extract-documentation-comments": "./source/main.js"
+  },
+  "doc": {
+	"man_synopsis": "`extract-documentation-comments [OPTION]...`"
   }
 }

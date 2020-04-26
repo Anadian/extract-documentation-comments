@@ -7,3 +7,4 @@
 - 2020-04-19 v0.0.6 Updated README.
 - 2020-04-26 v0.0.7 Synchronising stuff.
 - 2020-04-26 v0.0.8 Greatly improved README.md.
+- 2020-04-26 v0.0.9 Fixed markup issues in the README and cleaned up the working tree's root directory.

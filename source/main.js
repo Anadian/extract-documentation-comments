@@ -35,6 +35,7 @@ const FILENAME = 'extract-documentation-comments.js';
 const MODULE_NAME = 'ExtractDocumentationComments';
 var PACKAGE_JSON = {};
 var PROCESS_NAME = '';
+/* istanbul ignore else */
 if(require.main === module){
 	PROCESS_NAME = 'extract-documentation-comments';
 } else{
@@ -131,6 +132,7 @@ function getDocumentationStringFromSourceString( source_string, options = {} ){
 * @throws {Error} If a test fails.
 * @since v0.0.1
 */
+/* istanbul ignore next */
 function getDocumentationStringFromSourceString_Test(){
 	const FUNCTION_NAME = 'getDocumentationStringFromSourceString_Test';
 	//Variables
@@ -234,6 +236,7 @@ function getDocumentationStringFromSourceBuffer( source_buffer , options = {} ){
 * @throws {Error} If a test fails.
 * @since v0.0.1
 */
+/* istanbul ignore next */
 function getDocumentationStringFromSourceBuffer_Test(){
 	const FUNCTION_NAME = 'getDocumentationStringFromSourceBuffer_Test';
 	//Variables
@@ -307,6 +310,7 @@ function getDocumentationStringFromSourceBuffer_Test(){
 * @param {?Object} options - Command-line options. [default: {}]
 * @since v0.0.1
 */
+/* istanbul ignore next */
 async function main_Async( options = {} ){
 	var arguments_array = Array.from(arguments);
 	var return_error = null;
@@ -396,6 +400,7 @@ async function main_Async( options = {} ){
 * @throws {Error} If a test fails.
 * @since v0.0.1
 */
+/* istanbul ignore next */
 async function main_Async_Test(){
 	const FUNCTION_NAME = 'main_Async_Test';
 	//Variables
@@ -414,6 +419,7 @@ async function main_Async_Test(){
 }
 
 //#Exports and Execution
+/* istanbul ignore else */
 if(require.main === module){
 	var _return = [1,null];
 	const FUNCTION_NAME = 'MainExecutionFunction';
@@ -468,6 +474,7 @@ if(require.main === module){
 	//Options
 	var Options = CommandLineArgs( OptionDefinitions );
 	//Config
+	/* istanbul ignore next */
 	if( Options.verbose === true ){
 		Logger.real_transports.console_stderr.level = 'debug';
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: `Logger: console_stderr transport log level set to: ${Logger.real_transports.console_stderr.level}`});
@@ -488,10 +495,12 @@ if(require.main === module){
 		}
 	}
 	//Main
+	/* istanbul ignore next */
 	if( Options.version === true ){
 		console.log(PACKAGE_JSON.version);
 		quick_exit = true;
 	}
+	/* istanbul ignore next */
 	if( Options.help === true ){
 		const help_sections_array = [
 			{
@@ -507,10 +516,12 @@ if(require.main === module){
 		console.log(help_message);
 		quick_exit = true;
 	}
+	/* istanbul ignore next */
 	if( Options.config === true ){
 		quick_exit = true;
 	}
 	if( quick_exit === false || Options['no-quick-exit'] === true ){
+		/* istanbul ignore else */
 		if( Options.test === true ){
 			main_Async_Test();
 		} else{

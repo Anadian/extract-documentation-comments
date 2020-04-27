@@ -1,6 +1,6 @@
 {
   "name": "extract-documentation-comments",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
@@ -37,7 +37,6 @@
     "ava": "^3.6.0",
     "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
-    "jsdoc": "^3.6.4",
     "nyc": "^15.0.1"
   },
   "dependencies": {

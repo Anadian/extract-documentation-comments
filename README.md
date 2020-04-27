@@ -3,6 +3,8 @@
 [![Semantic Versioning 2.0.0](https://img.shields.io/badge/semver-2.0.0-brightgreen?style=flat-square)](https://semver.org/spec/v2.0.0.html)
 [![License](https://img.shields.io/github/license/Anadian/extract-documentation-comments)](https://github.com/Anadian/extract-documentation-comments/LICENSE)
 [![npm](https://img.shields.io/npm/v/extract-documentation-comments)](https://www.npmjs.com/package/extract-documentation-comments)
+[![Build Status](https://travis-ci.org/Anadian/extract-documentation-comments.svg?branch=master)](https://travis-ci.org/Anadian/extract-documentation-comments)
+[![Coverage Status](https://coveralls.io/repos/github/Anadian/extract-documentation-comments/badge.svg?branch=master)](https://coveralls.io/github/Anadian/extract-documentation-comments?branch=master)
 
 > Simply extract documentation comments from a source file.
 # Table of Contents

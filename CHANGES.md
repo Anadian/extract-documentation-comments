@@ -8,3 +8,4 @@
 - 2020-04-26 v0.0.7 Synchronising stuff.
 - 2020-04-26 v0.0.8 Greatly improved README.md.
 - 2020-04-26 v0.0.9 Fixed markup issues in the README and cleaned up the working tree's root directory.
+- 2020-04-26 v0.0.10 Experimentally adding Travis CI and Coveralls.

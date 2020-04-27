@@ -1,10 +1,10 @@
 {
   "name": "extract-documentation-comments",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
-    "test": "ava"
+    "test": "./source/main.js --test"
   },
   "repository": {
     "type": "git",

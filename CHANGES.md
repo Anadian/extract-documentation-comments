@@ -10,3 +10,4 @@
 - 2020-04-26 v0.0.9 Fixed markup issues in the README and cleaned up the working tree's root directory.
 - 2020-04-26 v0.0.10 Experimentally adding Travis CI and Coveralls.
 - 2020-04-26 v0.0.11 Debugging Travis CI; removing `docs` directory; uninstalling jsdoc.
+- 2020-04-26 v0.0.12 Correcting package.json.

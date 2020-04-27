@@ -1,6 +1,6 @@
 {
   "name": "extract-documentation-comments",
-  "version": "0.0.1!",
+  "version": "0.0.12",
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
@@ -49,9 +49,9 @@
     "make-dir": "^3.0.2"
   },
   "bin": {
-	  "extract-documentation-comments": "./source/main.js"
+    "extract-documentation-comments": "./source/main.js"
   },
   "doc": {
-	"man_synopsis": "`extract-documentation-comments [OPTION]...`"
+    "man_synopsis": "`extract-documentation-comments [OPTION]...`"
   }
 }

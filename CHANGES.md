@@ -12,3 +12,4 @@
 - 2020-04-26 v0.0.11 Debugging Travis CI; removing `docs` directory; uninstalling jsdoc.
 - 2020-04-26 v0.0.12 Correcting package.json.
 - 2020-04-26 v0.0.13 Actually removed jsdoc this time and annotated main.js with istanbul ignores.
+- 2020-04-26 v0.0.14 Improving test coverage.

@@ -45,6 +45,7 @@ if(require.main === module){
 
 //#Global Variables
 var Logger = { 
+	/* istanbul ignore next */
 	log: () => {
 		return null;
 	}
@@ -63,7 +64,9 @@ function setLogger( logger ){
 	//const FUNCTION_NAME = 'setLogger';
 	//Variables
 	//Parametre checks
+	/* istanbul ignore else */
 	if( typeof(logger) === 'object' ){
+		/* istanbul ignore next */
 		if( logger === null ){
 			logger = { 
 				log: () => {
@@ -209,6 +212,7 @@ function getDocumentationStringFromSourceBuffer( source_buffer , options = {} ){
 	//Function
 	buffer_string = source_buffer.toString( 'utf8' );
 	if( buffer_string !== '' ){
+		/* istanbul ignore catch */
 		try{
 			_return = getDocumentationStringFromSourceString( buffer_string, options );
 		} catch(error){
@@ -461,6 +465,7 @@ if(require.main === module){
 	var parent_dirname = '';
 	var package_path = '';
 	//Logger
+	/* istanbul ignore catch */
 	try{ 
 		MakeDir.sync( EnvironmentPaths.log );
 	} catch(error){
@@ -480,6 +485,7 @@ if(require.main === module){
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: `Logger: console_stderr transport log level set to: ${Logger.real_transports.console_stderr.level}`});
 	}
 	///Load package.json
+	/* istanbul ignore catch */
 	try{
 		source_dirname = Path.dirname( module.filename );
 		package_path = Path.join( source_dirname, 'package.json' );

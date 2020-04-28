@@ -33,10 +33,12 @@ Parametres:
 | name | type | description |
 | --- | --- | --- |
 | logger | {?object} | The logger to be used for logging or `null` to disable logging. |
+
 Throws:
 | code | type | condition |
 | --- | --- | --- |
 | 'ERR_INVALID_ARG_TYPE' | {TypeError} | Thrown if `logger` is neither an object nor `null` |
+
 Status:
 | version | change |
 | --- | --- |
@@ -49,14 +51,17 @@ Parametres:
 | --- | --- | --- |
 | source_string | {string} | The source file, as a string, to parse for `\/** ... *\/` style documentation strings. |
 | options | {?object} | \[Reserved\] Additional run-time options. \[default: {}\] |
+
 Returns:
 | type | description |
 | --- | --- |
 | {string} | A string containing all of the documentation style comments, with the comment markers themselves remove, concatenated together. |
+
 Throws:
 | code | type | condition |
 | --- | --- | --- |
 | 'ERR_INVALID_ARG_TYPE' | {TypeError} | Thrown if `source_string` isn't a string. |
+
 Status:
 | version | change |
 | --- | --- |
@@ -68,10 +73,12 @@ Returns:
 | type | description |
 | --- | --- |
 | {boolean} | Returns `true` if all tests pass successfully. |
+
 Throws:
 | code | type | condition |
 | --- | --- | --- |
 | any | {Error} | Thrown if a test fails. |
+
 Status:
 | version | change |
 | --- | --- |
@@ -84,15 +91,18 @@ Parametres:
 | --- | --- | --- |
 | source_buffer | {Buffer} | The source file, as a Node Buffer, to parse for `\/** ... *\/` style documentation strings. |
 | options | {?object} | \[Reserved\] Additional run-time options. \[default: {}\] |
+
 Returns:
 | type | description |
 | --- | --- |
 | {string} | A string containing all of the documentation style comments, with the comment markers themselves remove, concatenated together. |
+
 Throws:
 | code | type | condition |
 | --- | --- | --- |
 | 'ERR_INVALID_ARG_TYPE' | {TypeError} | Thrown if `source_buffer` isn't a Buffer. |
 | 'ERR_INVALID_RETURN_VALUE' | {Error} | Thrown if `source_buffer.toString()` returns an empty string or a non-string. |
+
 Status:
 | version | change |
 | --- | --- |
@@ -104,10 +114,12 @@ Returns:
 | type | description |
 | --- | --- |
 | {boolean} | Returns `true` if all tests pass successfully. |
+
 Throws:
 | code | type | condition |
 | --- | --- | --- |
 | any | {Error} | Thrown if a test fails. |
+
 Status:
 | version | change |
 | --- | --- |
@@ -119,6 +131,7 @@ Parametres:
 | name | type | description |
 | --- | --- | --- |
 | options | {?options} | An object representing the command-line options. \[default: {}\] |
+
 Status:
 | version | change |
 | --- | --- |
@@ -130,6 +143,7 @@ Parametres:
 | name | type | description |
 | --- | --- | --- |
 | options | {?options} | An object representing the command-line options. \[default: {}\] |
+
 Status:
 | version | change |
 | --- | --- |

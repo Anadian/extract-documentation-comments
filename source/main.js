@@ -51,8 +51,8 @@ if(require.main === module){
 //##Errors
 
 //#Global Variables
+/* istanbul ignore next */
 var Logger = { 
-	/* istanbul ignore next */
 	log: () => {
 		return null;
 	}

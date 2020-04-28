@@ -5,6 +5,8 @@
 [![npm](https://img.shields.io/npm/v/extract-documentation-comments)](https://www.npmjs.com/package/extract-documentation-comments)
 [![Build Status](https://travis-ci.org/Anadian/extract-documentation-comments.svg?branch=master)](https://travis-ci.org/Anadian/extract-documentation-comments)
 [![Coverage Status](https://coveralls.io/repos/github/Anadian/extract-documentation-comments/badge.svg?branch=master)](https://coveralls.io/github/Anadian/extract-documentation-comments?branch=master)
+![David](https://img.shields.io/david/Anadian/extract-documentation-comments)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 > Simply extract documentation comments from a source file.
 # Table of Contents

@@ -1,6 +1,6 @@
 {
   "name": "extract-documentation-comments",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
@@ -34,7 +34,6 @@
   },
   "homepage": "https://github.com/Anadian/extract-documentation-comments#readme",
   "devDependencies": {
-    "ava": "^3.6.0",
     "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
     "nyc": "^15.0.1"

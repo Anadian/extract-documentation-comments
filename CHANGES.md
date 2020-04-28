@@ -15,3 +15,4 @@
 - 2020-04-26 v0.0.14 Improving test coverage.
 - 2020-04-28 v0.1.0 docs(Made corrections in the README; reformatted the documentation comments in source/main.js; and created API.md)
 - 2020-04-28 v0.1.1 docs(Fixed formatting errors in the documentation comments of source/main.js)
+- 2020-04-28 v0.1.2 docs(README.md): Added more badges. fix(dependencies): Removed unused `ava` package from package.json.

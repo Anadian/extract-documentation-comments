@@ -16,7 +16,7 @@
 - [Contributing](#Contributing)
 - [License](#License)
 # Background
-I created this project because I felt all of the other "parse source-code comments to generate documentation" were unsatisfactory for what I needed.
+I created this project because I felt all of the other "parse source-code comments to generate documentation" solutions were unsatisfactory for what I needed.
 - [Doxygen](http://www.doxygen.nl/index.html) Is dated, obtuse, and its assumptions make it difficult to extend to language without very C-like syntax.
 - [JavaDoc](https://docs.oracle.com/javase/1.5.0/docs/tooldocs/solaris/javadoc.html), [JSDoc](https://jsdoc.app/), or any other `<LANGUAGE NAME>Doc`-type solution are, obviously, limited to a single language; they can usually only produce opinionated HTML natively, relying on unmaintained third-party extensions to produce anything else; and they all have slightly unique syntaxes that are confusingly similar yet problematically different.
 - [Natural Docs](https://www.naturaldocs.org/) Well definitely my favourite solution I've seen so far, its comment syntax is breezy and readable and it can easily be extended to any language, it still suffers from the issue of only natively producing HTML and its syntax can be pretty limited.
@@ -43,7 +43,7 @@ extract-documentation-comments
 Options
 
   -h, --help                 Writes this help text to stdout.                                              
-  -n, --noop                 Show what would be done without actually doing it.                            
+  -n, --noop                 [Reserved] Show what would be done without actually doing it.                 
   -v, --verbose              Verbose output to stderr.                                                     
   -V, --version              Writes version information to stdout.                                         
   -x, --no-quick-exit        Don't immediately exit after printing help, version, and/or config            
@@ -53,9 +53,9 @@ Options
   -t, --test                 Run unit tests and exit.                                                      
   -o, --stdout               Write output to stdout.                                                       
   -O, --output string        The name of the file to write output to.                                      
-  -p, --pasteboard           Copy output to pasteboard (clipboard).                                        
-  -c, --config               Print configuration values and information to stdout.                         
-  -C, --config-file string   Use the given config file instead of the default.                             
+  -p, --pasteboard           [Reserved] Copy output to pasteboard (clipboard).                             
+  -c, --config               [Reserved] Print configuration values and information to stdout.              
+  -C, --config-file string   [Reserved] Use the given config file instead of the default.                  
 ```
 # API
 ```js

@@ -18,3 +18,4 @@
 - 2020-04-28 v0.1.2 docs(README.md): Added more badges. fix(dependencies): Removed unused `ava` package from package.json.
 - 2020-04-28 v0.1.3 docs(API.md): Added URL for life-cycle state keywords standard.
 - 2020-05-01 v0.1.4 docs(API.md): Formatting fixes.
+- 2020-05-02 v0.1.5 fix(source/main.js): Slightly improved coverage.

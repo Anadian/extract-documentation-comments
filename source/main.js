@@ -528,21 +528,21 @@ if(require.main === module){
 	const EnvironmentPaths = EnvPaths( PROCESS_NAME );
 	const OptionDefinitions = [
 		//UI
-		{ name: 'help', alias: 'h', type: Boolean, description: 'Writes this help text to stdout.' },
+		{ name: 'help', alias: 'h', type: Boolean, description: 'Writes this help text to STDOUT.' },
 		{ name: 'noop', alias: 'n', type: Boolean, description: '[Reserved] Show what would be done without actually doing it.' },
-		{ name: 'verbose', alias: 'v', type: Boolean, description: 'Verbose output to stderr.' },
-		{ name: 'version', alias: 'V', type: Boolean, description: 'Writes version information to stdout.' },
+		{ name: 'verbose', alias: 'v', type: Boolean, description: 'Verbose output to STDERR.' },
+		{ name: 'version', alias: 'V', type: Boolean, description: 'Writes version information to STDOUT.' },
 		{ name: 'no-quick-exit', alias: 'x', type: Boolean, description: 'Don\'t immediately exit after printing help, version, and/or config information.' },
 		//Input
-		{ name: 'stdin', alias: 'i', type: Boolean, description: 'Read input from stdin.' },
+		{ name: 'stdin', alias: 'i', type: Boolean, description: 'Read input from STDIN.' },
 		{ name: 'input', alias: 'I', type: String, description: 'The path to the file to read input from.' },
 		{ name: 'test', alias: 't', type: Boolean, description: 'Run unit tests and exit.' },
 		//Output
-		{ name: 'stdout', alias: 'o', type: Boolean, description: 'Write output to stdout.' },
+		{ name: 'stdout', alias: 'o', type: Boolean, description: 'Write output to STDOUT.' },
 		{ name: 'output', alias: 'O', type: String, description: 'The name of the file to write output to.' },
 		{ name: 'pasteboard', alias: 'p', type: Boolean, description: '[Reserved] Copy output to pasteboard (clipboard).' },
 		//Config
-		{ name: 'config', alias: 'c', type: Boolean, description: '[Reserved] Print configuration values and information to stdout.' },
+		{ name: 'config', alias: 'c', type: Boolean, description: 'Print search paths and configuration values to STDOUT.' },
 		{ name: 'config-file', alias: 'C', type: String, description: '[Reserved] Use the given config file instead of the default.' },
 	];
 	//Variables
@@ -552,10 +552,9 @@ if(require.main === module){
 	var parent_dirname = '';
 	var package_path = '';
 	//Logger
-	/* istanbul ignore next */
 	try{ 
 		MakeDir.sync( EnvironmentPaths.log );
-	} catch(error){
+	} catch(error)/* istanbul ignore next */{
 		console.error('MakeDir.sync threw: %s', error);
 	}
 	function_return = ApplicationLogWinstonInterface.InitLogger('debug.log', EnvironmentPaths.log);
@@ -611,6 +610,7 @@ if(require.main === module){
 	}
 	/* istanbul ignore next */
 	if( Options.config === true ){
+		console.log('Paths: ', EnvironmentPaths);
 		quick_exit = true;
 	}
 	if( quick_exit === false || Options['no-quick-exit'] === true ){

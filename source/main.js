@@ -37,7 +37,8 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 //#Dependencies
 	//##Internal
 	//##Standard
-	const FileSystem = require('fs');
+  const FileSystem = require('fs');
+  const path = require('path')
 	//##External
 	const GetStream = require('get-stream');
 
@@ -141,7 +142,6 @@ function getDocumentationStringFromSourceString( source_string, options = {} ){
 	var regex = null;
 	var matches_iterator = null;
 	var matches_array = [];
-	var documentation = '';
 	const FUNCTION_NAME = 'getDocumentationStringFromSourceString';
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
 	//Variables
@@ -152,14 +152,10 @@ function getDocumentationStringFromSourceString( source_string, options = {} ){
 		throw return_error;
 	}
 	//Function
-	regex = new RegExp('/\\*\\*\\n([\\t\\n\\r -~]*?)\\*/', 'gs');
-	matches_iterator = source_string.matchAll(regex);
-	matches_array = Array.from(matches_iterator);
+  regex = new RegExp(/\/\*\*[\W\w\s\r\n*]*?\*\//, 'gs');
+  matches_iterator = source_string.matchAll(regex);
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `matches: ${matches_array}`});
-	for( var index = 0; index < matches_array.length; index++ ){
-		documentation += matches_array[index][1];
-	}
-	_return = documentation;
+  _return = Array.from(matches_iterator).join('\n').replace(/\/\*\*|\*\/|(?:\r?\n|\r){2,}/g, '')
 
 	//Return
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `returned: ${_return}`});
@@ -192,9 +188,9 @@ function getDocumentationStringFromSourceString_Test(){
 	var _return = false;
 	var return_error = null;
 	var arg_test = false;
-	var success_test = false;
-	var sample_input = 'something\n/**\n* should appear\nalso should appear\n*/\nshould not appear\n/**\nshould appear round two\n*/\nshould not appear\n';
-	var expected_output = '* should appear\nalso should appear\nshould appear round two\n';
+  var success_test = false;
+  var sample_input = FileSystem.readFileSync(path.resolve(__dirname, '../testFiles/testInput.js')).toString()
+  var expected_output = FileSystem.readFileSync(path.resolve(__dirname, '../testFiles/testOutput.txt')).toString()
 	var actual_output = '';
 	//Tests
 	///Invalid arg test
@@ -211,8 +207,8 @@ function getDocumentationStringFromSourceString_Test(){
 		}
 	}
 	///success test
-	try{
-		actual_output = getDocumentationStringFromSourceString( sample_input );
+  try {
+    actual_output = getDocumentationStringFromSourceString( sample_input );
 		if( actual_output === expected_output ){
 			success_test = true;
 		} else{
@@ -327,7 +323,7 @@ function getDocumentationStringFromSourceBuffer_Test(){
 	var null_buffer_test = false;
 	var success_test = false;
 	var input = null;
-	var expected_output = '* should appear\nalso should appear\nshould appear round two\n';
+  var expected_output = FileSystem.readFileSync(path.resolve(__dirname, '../testFiles/testOutput.txt')).toString();
 	var actual_output = '';
 	//Tests
 	test_name = 'invalid arg test';
@@ -358,8 +354,8 @@ function getDocumentationStringFromSourceBuffer_Test(){
 		}
 	}
 	test_name = 'success test';
-	try{
-		input = Buffer.from('something\n/**\n* should appear\nalso should appear\n*/\nshould not appear\n/**\nshould appear round two\n*/\nshould not appear\n', 'utf8');
+  try {
+    input = new Buffer.from(FileSystem.readFileSync(path.resolve(__dirname, '../testFiles/testInput.js')), 'utf8')
 		actual_output = getDocumentationStringFromSourceBuffer( input );
 		if( actual_output === expected_output ){
 			success_test = true;
@@ -498,8 +494,10 @@ async function main_Async_Test(){
 	var _return = false;
 	var return_error = null;
 	//Tests
-	try{
-		getDocumentationStringFromSourceString_Test();
+  try {
+    console.log('string');
+    getDocumentationStringFromSourceString_Test();
+    console.log('buffer');
 		getDocumentationStringFromSourceBuffer_Test();
 	} catch(error){
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'crit', message: `Test failed with error: '${error}'`});

@@ -4,7 +4,10 @@
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
-    "test": "node source/main.js --test"
+    "test": "node source/main.js --test",
+    "lint": "eslint ./source/main.js",
+    "generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
+    "update-travis-config": "json2yaml --preserve-key-order ci/travis.json .travis.yml"
   },
   "repository": {
     "type": "git",
@@ -36,7 +39,8 @@
   "devDependencies": {
     "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
-    "nyc": "^15.0.1"
+    "nyc": "^15.0.1",
+    "standard-version": "^8.0.0"
   },
   "dependencies": {
     "application-log-winston-interface": "^1.0.5",
@@ -49,7 +53,70 @@
   "bin": {
     "extract-documentation-comments": "./source/main.js"
   },
-  "doc": {
-    "man_synopsis": "`extract-documentation-comments [OPTION]...`"
+  "eslintConfig": {
+    "env": {
+      "commonjs": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+      "ecmaVersion": 11
+    },
+    "rules": {
+      "no-unused-vars": [
+        "warn"
+      ],
+      "no-useless-escape": "off",
+      "no-empty": "warn"
+    }
+  },
+  "standard-version": {
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features",
+        "hidden": false
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes",
+        "hidden": false
+      },
+      {
+        "type": "chore",
+        "section": "Chores",
+        "hidden": false
+      },
+      {
+        "type": "docs",
+        "section": "Documentation",
+        "hidden": false
+      },
+      {
+        "type": "style",
+        "section": "Code Style",
+        "hidden": false
+      },
+      {
+        "type": "refactor",
+        "section": "Refactoring",
+        "hidden": false
+      },
+      {
+        "type": "perf",
+        "section": "Performance",
+        "hidden": false
+      },
+      {
+        "type": "test",
+        "section": "Tests",
+        "hidden": false
+      }
+    ]
   }
 }

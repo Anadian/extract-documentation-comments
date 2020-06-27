@@ -39,6 +39,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	//##Standard
 	const FileSystem = require('fs');
 	const Path = require('path')
+	const Utility = require('util');
 	//##External
 	const GetStream = require('get-stream');
 	const MakeDir = require('make-dir');
@@ -500,7 +501,7 @@ function getDocumentationStringFromFilePathSync( file_path, options = {},){
 		return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 		throw return_error;
 	}
-	if( file_string != null ){
+	if( file_buffer != null ){
 		try{
 			documentation_string = getDocumentationStringFromSourceBuffer( file_buffer, options );
 		} catch(error){
@@ -711,7 +712,7 @@ async function main_Async( options = {} ){
 					error: null
 				};
 				try{
-					output_String = getDocumentationStringFromFilePathSync( options.input[i], options );
+					output_string = getDocumentationStringFromFilePathSync( options.input[i], options );
 					try{
 						output_path = Path.join( options.output, options.input[i] );
 						try{
@@ -743,7 +744,7 @@ async function main_Async( options = {} ){
 					report.files.push( report_file_object );
 				}
 			}
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `Multi-file report: ${report}`});
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `Multi-file report: ${Utility.inspect( report, false, null, true )}`});
 		} else{
 			return_error = new Error('"options.output" (`--output`) must be specified when using multi-file mode.');
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});

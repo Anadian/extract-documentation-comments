@@ -690,34 +690,94 @@ async function main_Async( options = {} ){
 	//Variables
 	var input_string = '';
 	var output_string = '';
+	//var glob_report = {};
+	var output_path = '';
+	var output_directory = '';
+	var report = {
+		files: []
+	};
+	var report_file_object = {};
 	//Parametre checks
 	//Function
-	///Input
-	if( options.stdin === true ){
-		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from STDIN.'});
-		try{
-			input_string = await GetStream( process.stdin, 'utf8' );
-		} catch(error){
-			return_error = new Error(`GetStream threw an error: ${error}`);
+	//Multi-file mode
+	if( options.input != null && Array.isArray(options.input) === true ){
+		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: ${options.input.toString('utf8')}`});
+		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: 'Multi-file mode activated.'});
+		if( options.output != null && typeof(options.output) === 'string' ){
+			for( var i = 0; i < options.input.length; i++ ){
+				report_file_object = {
+					path: options.input[i],
+					success: false,
+					error: null
+				};
+				try{
+					output_String = getDocumentationStringFromFilePathSync( options.input[i], options );
+					try{
+						output_path = Path.join( options.output, options.input[i] );
+						try{
+							output_directory = Path.dirname( output_path );
+							try{
+								MakeDir.sync( output_directory );
+								try{
+									FileSystem.writeFileSync( output_path, output_string, 'utf8' );
+									report_file_object.success = true;
+									report.files.push( report_file_object );
+								} catch(error){
+									report_file_object.error = new Error(`FileSystem.writeFileSync threw an error: ${error}`);
+									report.files.push( report_file_object );
+								}
+							} catch(error){
+								report_file_object.error = new Error(`MakeDir.sync threw an error: ${error}`);
+								report.files.push( report_file_object );
+							}
+						} catch(error){
+							report_file_object.error = new Error(`Path.dirname threw an error: ${error}`);
+							report.files.push( report_file_object );
+						}
+					} catch(error){
+						report_file_object.error = new Error(`Path.join threw an error: ${error}`);
+						report.files.push( report_file_object );
+					}
+				} catch(error){
+					report_file_object.error = new Error(`getDocumentationStringFromFilePathSync threw an error: ${error}`);
+					report.files.push( report_file_object );
+				}
+			}
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `Multi-file report: ${report}`});
+		} else{
+			return_error = new Error('"options.output" (`--output`) must be specified when using multi-file mode.');
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 		}
-	} else if( options.input != null ){
-		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from a file.'});
-		if( typeof(options.input) === 'string' ){
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: '${options.input}'`});
+	}
+	//Single-file mode
+	///Input
+	if( return_error === null ){
+		if( options.stdin === true ){
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from STDIN.'});
 			try{
-				input_string = FileSystem.readFileSync( options.input, 'utf8' );
+				input_string = await GetStream( process.stdin, 'utf8' );
 			} catch(error){
-				return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
+				return_error = new Error(`GetStream threw an error: ${error}`);
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+			}
+		} else if( options.input != null ){
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from a file.'});
+			if( typeof(options.input) === 'string' ){
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: '${options.input}'`});
+				try{
+					input_string = FileSystem.readFileSync( options.input, 'utf8' );
+				} catch(error){
+					return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
+					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+				}
+			} else{
+				return_error = new Error('"options.input" is not a string.');
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 			}
 		} else{
-			return_error = new Error('"options.input" is not a string.');
+			return_error = new Error('No input options specified.');
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 		}
-	} else{
-		return_error = new Error('No input options specified.');
-		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 	}
 	///Transform
 	if( return_error === null ){
@@ -821,11 +881,12 @@ if(require.main === module){
 		{ name: 'no-quick-exit', alias: 'x', type: Boolean, description: 'Don\'t immediately exit after printing help, version, and/or config information.' },
 		//Input
 		{ name: 'stdin', alias: 'i', type: Boolean, description: 'Read input from STDIN.' },
-		{ name: 'input', alias: 'I', type: String, description: 'The path to the file to read input from.' },
+		{ name: 'input', alias: 'I', type: String, multiple: true, defaultOption: true, description: 'The path to the file to read input from.' },
+		{ name: 'input-glob', alias: 'G', type: String, description: '[wip] A glob literal as a string: will generate a documentation file for all source files matching this glob; the files will be place in the output directory named in `--output`. Remember to properly escape the string for your shell.' }, 
 		{ name: 'test', alias: 't', type: Boolean, description: 'Run unit tests and exit.' },
 		//Output
 		{ name: 'stdout', alias: 'o', type: Boolean, description: 'Write output to STDOUT.' },
-		{ name: 'output', alias: 'O', type: String, description: 'The name of the file to write output to.' },
+		{ name: 'output', alias: 'O', type: String, description: 'The name of the file to write output to or, in the case of using `--input-glob`, the name of the directory to place the generated documentation files.' },
 		{ name: 'pasteboard', alias: 'p', type: Boolean, description: '[Reserved] Copy output to pasteboard (clipboard).' },
 		//Config
 		{ name: 'config', alias: 'c', type: Boolean, description: 'Print search paths and configuration values to STDOUT.' },

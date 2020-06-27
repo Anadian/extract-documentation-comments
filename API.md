@@ -69,6 +69,7 @@ Throws:
 Status:
 | version | change |
 | --- | --- |
+| 0.1.6 | Revamped the parsing logic. |
 | 0.0.1 | Introduced |
 ### getDocumentationStringFromSourceString_Test (private)
 > Tests [getDocumentationStringFromSourceString](#getDocumentationStringFromSourceString); this function is not exported and should only be used internally by this module. 
@@ -86,6 +87,7 @@ Throws:
 Status:
 | version | change |
 | --- | --- |
+| 0.1.7 | Cleaned up. |
 | 0.0.1 | Introduced |
 ### getDocumentationStringFromSourceBuffer
 > Returns a string containing only the contents of `\/** ... *\/` style documentation strings from the given source-file buffer.
@@ -110,6 +112,7 @@ Throws:
 Status:
 | version | change |
 | --- | --- |
+| 0.1.7 | Cleaned up. |
 | 0.0.1 | Introduced |
 ### getDocumentationStringFromSourceBuffer_Test (private)
 > Tests [getDocumentationStringFromSourceBuffer](#getDocumentationStringFromSourceBuffer); this function is not exported and should only be used internally by this module. 

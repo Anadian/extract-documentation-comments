@@ -19,7 +19,7 @@
 - [License](#License)
 # Background
 I created this project because I felt all of the other "parse source-code comments to generate documentation" solutions were unsatisfactory for what I needed.
-- [Doxygen](http://www.doxygen.nl/index.html) Is dated, obtuse, and its assumptions make it difficult to extend to language without very C-like syntax.
+- [Doxygen](http://www.doxygen.nl/index.html) Is dated, obtuse, and its assumptions make it difficult to extend to languages without very C-like syntax.
 - [JavaDoc](https://docs.oracle.com/javase/1.5.0/docs/tooldocs/solaris/javadoc.html), [JSDoc](https://jsdoc.app/), or any other `<LANGUAGE NAME>Doc`-type solution are, obviously, limited to a single language; they can usually only produce opinionated HTML natively, relying on unmaintained third-party extensions to produce anything else; and they all have slightly unique syntaxes that are confusingly similar yet problematically different.
 - [Natural Docs](https://www.naturaldocs.org/) Well definitely my favourite solution I've seen so far, its comment syntax is breezy and readable and it can easily be extended to any language, it still suffers from the issue of only natively producing HTML and its syntax can be pretty limited.
 

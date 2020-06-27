@@ -65,7 +65,7 @@ const ExtractDocumentationComments = require('extract-documentation-comments');
 ```
 See [API.md](API.md) for full API.
 # Contributing
-Changes are tracked in [CHANGES.md](CHANGES.md).
+Changes are tracked in [CHANGELOG.md](CHANGELOG.md).
 # License
 MIT ©2020 Anadian
 

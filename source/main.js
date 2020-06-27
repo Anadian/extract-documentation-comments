@@ -133,6 +133,7 @@ Throws:
 Status:
 | version | change |
 | --- | --- |
+| 0.1.6 | Revamped the parsing logic. |
 | 0.0.1 | Introduced |
 */
 function getDocumentationStringFromSourceString( source_string, options = {} ){

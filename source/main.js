@@ -142,6 +142,7 @@ function getDocumentationStringFromSourceString( source_string, options = {} ){
 	var regex = null;
 	var matches_iterator = null;
 	var matches_array = [];
+	var documentation = '';
 	const FUNCTION_NAME = 'getDocumentationStringFromSourceString';
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
 	//Variables
@@ -152,10 +153,18 @@ function getDocumentationStringFromSourceString( source_string, options = {} ){
 		throw return_error;
 	}
 	//Function
-  regex = new RegExp(/\/\*\*[\W\w\s\r\n*]*?\*\//, 'gs');
+	regex = new RegExp('/\\*\\*([\\t\\n\\r -~]*?)\\*/', 'gs');
+	matches_iterator = source_string.matchAll(regex);
+	matches_array = Array.from(matches_iterator);
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `matches: ${matches_array}`});
+	for( var index = 0; index < matches_array.length; index++ ){
+		documentation += (matches_array[index][1])+'\n'; //Crude and will be polished up soon.
+	}
+	_return = documentation;
+  /**regex = new RegExp(/\/\*\*[\W\w\s\r\n*]*?\*\//, 'gs');
   matches_iterator = source_string.matchAll(regex);
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `matches: ${matches_array}`});
-  _return = Array.from(matches_iterator).join('\n').replace(/\/\*\*|\*\/|(?:\r?\n|\r){2,}/g, '')
+  _return = Array.from(matches_iterator).join('\n').replace(/\/\*\*|\*\/|(?:\r?\n|\r){2,}/g, '')*/
 
 	//Return
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `returned: ${_return}`});
@@ -323,7 +332,7 @@ function getDocumentationStringFromSourceBuffer_Test(){
 	var null_buffer_test = false;
 	var success_test = false;
 	var input = null;
-  var expected_output = FileSystem.readFileSync(path.resolve(__dirname, '../testFiles/testOutput.txt')).toString();
+	var expected_output = FileSystem.readFileSync(path.resolve(__dirname, '../testFiles/testOutput.txt'), 'utf8');
 	var actual_output = '';
 	//Tests
 	test_name = 'invalid arg test';
@@ -334,6 +343,7 @@ function getDocumentationStringFromSourceBuffer_Test(){
 	} catch(error){
 		if( error.code === 'ERR_INVALID_ARG_TYPE' ){
 			arg_test = true;
+			console.log('arg_test passed.');
 		} else{
 			arg_test = new Error(`Failure: ${test_name}: received an unexpected error: '${error}'`);
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: arg_test.message});
@@ -348,17 +358,19 @@ function getDocumentationStringFromSourceBuffer_Test(){
 	} catch(error){
 		if( error.code === 'ERR_INVALID_RETURN_VALUE' ){
 			null_buffer_test = true;
+			console.log('null_buffer_test passed.');
 		} else{
 			null_buffer_test = new Error(`Failure: ${test_name}: received an unexpected error: ${error}`);
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: null_buffer_test.message});
 		}
 	}
 	test_name = 'success test';
-  try {
-    input = new Buffer.from(FileSystem.readFileSync(path.resolve(__dirname, '../testFiles/testInput.js')), 'utf8')
+	try {
+		input = new Buffer.from(FileSystem.readFileSync(path.resolve(__dirname, '../testFiles/testInput.js')), 'utf8')
 		actual_output = getDocumentationStringFromSourceBuffer( input );
 		if( actual_output === expected_output ){
 			success_test = true;
+			console.log('success_test passed');
 		} else{
 			success_test = new Error(`Failure: ${test_name}: actual output '${actual_output}' didn't match expected output '${expected_output}'`);
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: success_test.message});

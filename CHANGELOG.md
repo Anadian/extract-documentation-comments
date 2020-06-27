@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.1...v0.2.2) (2020-06-27)
+
+
+### Bug Fixes
+
+* **package.json:** Corrected the accidental recursive publish in the `publish` script. ([d8dce84](https://github.com/Anadian/extract-documentation-comments/commit/d8dce8411bde35a637f15334bd31f3cf9746d4b4))
+
 ### [0.2.1](https://github.com/Anadian/extract-documentation-comments/compare/v0.1.6...v0.2.1) (2020-06-27)
 
 

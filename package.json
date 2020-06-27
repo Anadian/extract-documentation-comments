@@ -1,6 +1,6 @@
 {
   "name": "extract-documentation-comments",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
@@ -8,8 +8,8 @@
     "lint": "eslint ./source/main.js",
     "generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
     "update-travis-config": "json2yaml --preserve-key-order ci/travis.json .travis.yml",
-	"release": "standard-version",
-	"publish": "git push --follow-tags origin master && npm publish"
+    "release": "standard-version",
+    "publish": "git push --follow-tags origin master && npm publish"
   },
   "repository": {
     "type": "git",

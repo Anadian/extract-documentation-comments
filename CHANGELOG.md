@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/Anadian/extract-documentation-comments/compare/v0.1.6...v0.2.1) (2020-06-27)
+
+
+### Tests
+
+* Greatly reformatted tests. We should probably switch to an actual test suite soon though. ([aa9bd65](https://github.com/Anadian/extract-documentation-comments/commit/aa9bd6565c6d9cef2ff685f4c83299935c27e6f8))
+
+
+### Documentation
+
+* Regenerated docs; will push to GitHub to see if the formatting still holds. ([4127e6e](https://github.com/Anadian/extract-documentation-comments/commit/4127e6e09281d9821f8f38f7c413e2a82d9096ca))
+
+
+### Chores
+
+* Added more convenience scripts. ([bd7c622](https://github.com/Anadian/extract-documentation-comments/commit/bd7c6226504a6a6463e9fc40b2003d2abbd9ad6a))
+* Cleaned up directory structure. ([79616fd](https://github.com/Anadian/extract-documentation-comments/commit/79616fd9573b62e587104eaf111244375f9f533a))
+* Forcing minor version bump because `standard-version` ignores the breaking change in the parsing commit. ([8e15f37](https://github.com/Anadian/extract-documentation-comments/commit/8e15f3714a06ca8cf693d18d3b63fc864200211c))
+* Removed now unnecessary files. ([20e10ec](https://github.com/Anadian/extract-documentation-comments/commit/20e10ecee8d09aa61c276da03d15ee6566a06780))
+* Renamed test files. ([94b2a8f](https://github.com/Anadian/extract-documentation-comments/commit/94b2a8f6daf6ee942506091fe89688db64af5c89))
+
 ### [0.1.6](https://github.com/Anadian/extract-documentation-comments/compare/v0.1.5...v0.1.6) (2020-06-27)
 
 

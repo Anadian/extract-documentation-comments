@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/Anadian/extract-documentation-comments/compare/v0.1.5...v0.1.6) (2020-06-27)
+
+
+### Chores
+
+* Preparing for first `standard-version` release. ([4ac9c5b](https://github.com/Anadian/extract-documentation-comments/commit/4ac9c5b9cd344437f224815f93cfe3c6e252603d))
+
 ### 0.1.5 (2020-06-27)
 
 

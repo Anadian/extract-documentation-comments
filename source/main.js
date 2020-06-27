@@ -41,6 +41,8 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	const Path = require('path')
 	//##External
 	const GetStream = require('get-stream');
+	const MakeDir = require('make-dir');
+	const Globby = require('globby');
 
 //#Constants
 const FILENAME = 'extract-documentation-comments.js';
@@ -445,7 +447,226 @@ function getDocumentationStringFromSourceBuffer_Test(){
 	}
 	return _return;
 }
+/**
+### getDocumentationStringFromFilePathSync
+> Generates a documentation String from the source-code comments in the file at the given filepath.
 
+Parametres:
+| name | type | description |
+| --- | --- | --- |
+| file_path | {string} | The file path as a string to read and parse for documentation comments.  |
+| options | {?Object} | [Reserved] Additional run-time options. \[default: {}\] |
+
+Returns:
+| type | description |
+| --- | --- |
+| {string} | The documentation string for the given file. |
+
+Throws:
+| code | type | condition |
+| --- | --- | --- |
+| 'ERR_INVALID_ARG_TYPE' | {TypeError} | Thrown if a given argument isn't of the correct type. |
+
+Status:
+| version | change |
+| --- | --- |
+| 0.2.2 | Introduced |
+*/
+function getDocumentationStringFromFilePathSync( file_path, options = {},){
+	var arguments_array = Array.from(arguments);
+	var _return;
+	var return_error;
+	const FUNCTION_NAME = 'getDocumentationStringFromFilePathSync';
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
+	//Variables
+	var file_buffer = null;
+	var documentation_string = '';
+	//Parametre checks
+	if( typeof(file_path) !== 'string' ){
+		return_error = new TypeError('Param "file_path" is not string.');
+		return_error.code = 'ERR_INVALID_ARG_TYPE';
+		throw return_error;
+	}
+	if( typeof(options) !== 'object' ){
+		return_error = new TypeError('Param "options" is not ?Object.');
+		return_error.code = 'ERR_INVALID_ARG_TYPE';
+		throw return_error;
+	}
+
+	//Function
+	try{
+		file_buffer = FileSystem.readFileSync( file_path );
+	} catch(error){
+		return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
+		throw return_error;
+	}
+	if( file_string != null ){
+		try{
+			documentation_string = getDocumentationStringFromSourceBuffer( file_buffer, options );
+		} catch(error){
+			return_error = new Error(`getDocumentationStringFromSourceString threw an error: ${error}`);
+			throw return_error;
+		}
+	}
+	if( documentation_string != null ){
+		_return = documentation_string;
+	}
+	//Return
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `returned: ${_return}`});
+	return _return;
+}
+/**
+### generateDocumentationDirectoryFromFileGlobSync
+> Creates a documentation directory mirroring the structure of the file paths matching the given glob.
+
+Parametres:
+| name | type | description |
+| --- | --- | --- |
+| file_glob | {string} | The POSIX-y glob of files to be read and parsed to generate the documentation files in the given output directory.  |
+| output_directory | {?string} | The name of the output directory to create and place the documentation files in. If `null` or not specified, the value of `options.output` will be used; if neither are specified, an error will be thrown.  |
+| options | {?Object} | Additional run-time options. \[default: {}\] |
+
+Returns:
+| type | description |
+| --- | --- |
+| {Object} | A report detailing what actions succeeded and what failed. The `success` property will be true if everything is good. The `steps` property is a hiearchical breakdown of what files were created and any failures that occured. |
+
+Throws:
+| code | type | condition |
+| --- | --- | --- |
+| 'ERR_INVALID_ARG_TYPE' | {TypeError} | Thrown if a given argument isn't of the correct type. |
+| 'ERR_INVALID_ARG_VALUE' | {Error} | Thrown if no output directory is specified in either the `output_directory` parametre or `options.output`. |
+| 'ERR_INVALID_RETURN_VALUE' | {Error} | Thrown if the glob doesn't produce a valid array of file paths. |
+
+Status:
+| version | change |
+| --- | --- |
+| 0.2.2 | Introduced |
+*/
+function generateDocumentationDirectoryFromFileGlobSync( file_glob, output_directory, options = {},){
+	var arguments_array = Array.from(arguments);
+	var _return;
+	var return_error;
+	const FUNCTION_NAME = 'generateDocumentationDirectoryFromFileGlobSync';
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
+	//Variables
+	var real_options = {};
+	var prefix_output_directory = '';
+	var report = {
+		success: true,
+		documentation_directory: '',
+		files: []
+	};
+	var report_file_object = {};
+	var file_paths_array = [];
+	var output_path = '';
+	var output_file_dirname = '';
+	var documentation_string = '';
+	//Parametre checks
+	if( typeof(file_glob) !== 'string' ){
+		return_error = new TypeError('Param "file_glob" is not string.');
+		return_error.code = 'ERR_INVALID_ARG_TYPE';
+		throw return_error;
+	}
+	if( typeof(output_directory) !== 'object' ){ //If `output_directory` is an object we assume it's actually the options object.
+		if( typeof(output_directory) !== 'string' ){
+			return_error = new TypeError('Param "output_directory" is not ?string.');
+			return_error.code = 'ERR_INVALID_ARG_TYPE';
+			throw return_error;
+		} else{
+			prefix_output_directory = output_directory;
+		}
+	} else{
+		real_options = output_directory;
+	}
+	if( typeof(options) !== 'object' ){
+		return_error = new TypeError('Param "options" is not ?Object.');
+		return_error.code = 'ERR_INVALID_ARG_TYPE';
+		throw return_error;
+	} else{
+		real_options = options;
+	}
+
+	//Function
+	if( prefix_output_directory === '' && real_options != null ){
+		try{
+			prefix_output_director = real_options.output;
+		} catch(error){
+			return_error = new Error(`Caught an error when attempting to use "options.output" as the output directory: ${error}`);
+			throw return_error;
+		}
+	}
+	if( prefix_output_directory !== '' ){
+		try{
+			MakeDir.sync(prefix_output_directory);
+			report.documentation_directory = prefix_output_directory;
+		} catch(error){
+			return_error = new Error(`MakeDir.sync threw an error: ${error}`);
+			throw return_error;
+		}
+		try{
+			file_paths_array = Globby.sync( file_glob );
+		} catch(error){
+			return_error = new Error(`Globby.sync threw an error: ${error}`);
+			throw return_error;
+		}
+		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `file_paths_Array: ${file_paths_array.toString('utf8')}`});
+		if( file_paths_array !== [] ){
+			for( var i = 0; i < file_paths_array; i++ ){
+				report_file_object = {
+					path: file_paths_array[i],
+					success: false,
+					error: null
+				};
+				try{
+					documentation_string = getDocumentationStringFromFilePathSync( file_paths_array[i] );
+					try{
+						output_path = Path.join( prefix_output_directory, file_paths_array[i] );
+						try{
+							output_file_dirname = Path.dirname( file_paths_array[i] );
+							try{
+								MakeDir.sync( output_file_dirname );
+								try{
+									FileSystem.writeFileSync( output_path, documentation_string, 'utf8' );
+									report_file_object.success = true;
+									report.files.push( report_file_object );
+								} catch(error){
+									return_error = new Error(`FileSystem.writeFileSync threw an error: ${error}`);
+									throw return_error;
+								}
+							} catch(error){
+								report_file_object.error = new Error(`MakeDir.sync threw an error: ${error}`);
+								report.files.push( report_file_object );
+							}
+						} catch(error){
+							report_file_object.error = new Error(`Path.dirname threw an error: ${error}`);
+							report.files.push( report_file_object );
+						}
+					} catch(error){
+						report_file_object.error = new Error(`Path.join threw an error: ${error}`);
+						report.files.push( report_file_object );
+					}
+				} catch(error){
+					report_file_object.error = new Error(`getDocumentationStringFromFilePathSync threw an error: ${error}`);
+					report.files.push( report_file_object );
+				}
+			}
+			_return = report;
+		} else{
+			return_error = new Error(`Globby.sync didn't return an array: ${file_paths_array}`);
+			return_error.code = 'ERR_INVALID_RETURN_VALUE';
+			throw return_error;
+		}
+	} else{
+		return_error = new Error('No output directory specified in either in "output_diriectory" parametre or "options.output" property.');
+		return_error.code = 'ERR_INVALID_ARG_VALUE';
+		throw return_error;
+	}
+
+	//Return
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `returned: ${_return}`});
+	return _return;
+}
 /**
 ### main_Async (private)
 > The main function when the script is run as an executable without the `--test` command-line option. Not exported and should never be manually called.
@@ -585,7 +806,6 @@ if(require.main === module){
 		//###Standard
 		const Path = require('path');
 		//###External
-		const MakeDir = require('make-dir');
 		const ApplicationLogWinstonInterface = require('application-log-winston-interface');
 		const EnvPaths = require('env-paths');
 		const CommandLineArgs = require('command-line-args');

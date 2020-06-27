@@ -50,6 +50,7 @@
     "command-line-usage": "^6.1.0",
     "env-paths": "^2.2.0",
     "get-stream": "^5.1.0",
+    "globby": "^11.0.1",
     "make-dir": "^3.0.2"
   },
   "bin": {

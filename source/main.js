@@ -44,6 +44,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	const GetStream = require('get-stream');
 	const MakeDir = require('make-dir');
 	const Globby = require('globby');
+	//const TAP = require('tap');
 
 //#Constants
 const FILENAME = 'extract-documentation-comments.js';
@@ -844,10 +845,10 @@ async function main_Async_Test(){
 	var _return = false;
 	var return_error = null;
 	//Tests
-  try {
-    console.log('string');
-    getDocumentationStringFromSourceString_Test();
-    console.log('buffer');
+	try {
+		console.log('string');
+		getDocumentationStringFromSourceString_Test();
+		console.log('buffer');
 		getDocumentationStringFromSourceBuffer_Test();
 	} catch(error){
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'crit', message: `Test failed with error: '${error}'`});

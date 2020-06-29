@@ -547,7 +547,8 @@ Status:
 | --- | --- |
 | 0.2.2 | Introduced |
 */
-function generateDocumentationDirectoryFromFileGlobSync( file_glob, output_directory, options = {},){
+/* istanbul ignore next */
+function generateDocumentationDirectoryFromFileGlobSync( file_glob, output_directory, options = {} ){
 	var arguments_array = Array.from(arguments);
 	var _return;
 	var return_error;

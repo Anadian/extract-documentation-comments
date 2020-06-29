@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.2...v0.2.3) (2020-06-29)
+
+
+### Features
+
+* **CLI:** Added proper multi-file mode via `command-line-args` multiple property. ([a5c3664](https://github.com/Anadian/extract-documentation-comments/commit/a5c3664840ff99d254649808b45f0082810d2c9d))
+* **CLI:** Multi-file mode appears to be working correctly. Will have to add tests. ([bb3cac5](https://github.com/Anadian/extract-documentation-comments/commit/bb3cac5af27e0ac85ac96be5289779f9b1567d08))
+* **globbing:** Added `getDocumentationStringFromFilePathSync` and `generateDocumentationDirectoryFromFileGlobSync` in experimental form. Added `globby` as a dependency. ([4c921de](https://github.com/Anadian/extract-documentation-comments/commit/4c921deef208065a7cdb741d115f0acee2c1a212))
+
+
+### Bug Fixes
+
+* **README.md:** Corrected a small typo. ([c678c29](https://github.com/Anadian/extract-documentation-comments/commit/c678c296ade103875e44309d524455e132ba70ee))
+
+
+### Tests
+
+* Started new CLI test suite. ([3f61f7e](https://github.com/Anadian/extract-documentation-comments/commit/3f61f7e92c2635e791e57d298207b92bcd25dc19))
+* Tests for multi-file mode is "complete" but still quite shallow; last commit before cleaning and releasing. ([4f39c69](https://github.com/Anadian/extract-documentation-comments/commit/4f39c69d5ab23c9353f433dc305bdc182d591d62))
+
+
+### Chores
+
+* Real final commit before release. ([147f7b0](https://github.com/Anadian/extract-documentation-comments/commit/147f7b08eacfcb0ef9a5e6107c66a7b171423764))
+
 ### [0.2.2](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.1...v0.2.2) (2020-06-27)
 
 

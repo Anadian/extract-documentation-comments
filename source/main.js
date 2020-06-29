@@ -166,7 +166,7 @@ function getDocumentationStringFromSourceString( source_string, options = {} ){
 		documentation += (matches_array[index][1])+'\n'; //Crude and will be polished up soon.
 	}
 	_return = documentation;
-  /**regex = new RegExp(/\/\*\*[\W\w\s\r\n*]*?\*\//, 'gs');
+  /*regex = new RegExp(/\/\*\*[\W\w\s\r\n*]*?\*\//, 'gs');
   matches_iterator = source_string.matchAll(regex);
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `matches: ${matches_array}`});
   _return = Array.from(matches_iterator).join('\n').replace(/\/\*\*|\*\/|(?:\r?\n|\r){2,}/g, '')*/ 
@@ -690,7 +690,7 @@ async function main_Async( options = {} ){
 	var arguments_array = Array.from(arguments);
 	var return_error = null;
 	const FUNCTION_NAME = 'main_Async';
-	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${arguments_array}`});
+	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `received: ${Utility.inspect( arguments_array, true, null, true )}`});
 	//Variables
 	var input_string = '';
 	var output_string = '';
@@ -704,52 +704,71 @@ async function main_Async( options = {} ){
 	//Parametre checks
 	//Function
 	//Multi-file mode
-	if( options.input != null && Array.isArray(options.input) === true ){
-		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: ${options.input.toString('utf8')}`});
-		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: 'Multi-file mode activated.'});
-		if( options.output != null && typeof(options.output) === 'string' ){
-			for( var i = 0; i < options.input.length; i++ ){
-				report_file_object = {
-					path: options.input[i],
-					success: false,
-					error: null
-				};
-				try{
-					output_string = getDocumentationStringFromFilePathSync( options.input[i], options );
+	if( options.input != null && typeof(options.input) === 'object' && Array.isArray(options.input) === true ){
+		if( options.input.length > 1 ){
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: ${options.input.toString('utf8')}`});
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: 'Multi-file mode activated.'});
+			if( options.output != null && typeof(options.output) === 'string' ){
+				for( var i = 0; i < options.input.length; i++ ){
+					report_file_object = {
+						path: options.input[i],
+						success: false,
+						error: null
+					};
 					try{
-						output_path = Path.join( options.output, options.input[i] );
+						output_string = getDocumentationStringFromFilePathSync( options.input[i], options );
 						try{
-							output_directory = Path.dirname( output_path );
+							output_path = Path.join( options.output, options.input[i] );
 							try{
-								MakeDir.sync( output_directory );
+								output_directory = Path.dirname( output_path );
 								try{
-									FileSystem.writeFileSync( output_path, output_string, 'utf8' );
-									report_file_object.success = true;
-									report.files.push( report_file_object );
+									MakeDir.sync( output_directory );
+									try{
+										FileSystem.writeFileSync( output_path, output_string, 'utf8' );
+										report_file_object.success = true;
+										report.files.push( report_file_object );
+									} catch(error){
+										report_file_object.error = new Error(`FileSystem.writeFileSync threw an error: ${error}`);
+										report.files.push( report_file_object );
+									}
 								} catch(error){
-									report_file_object.error = new Error(`FileSystem.writeFileSync threw an error: ${error}`);
+									report_file_object.error = new Error(`MakeDir.sync threw an error: ${error}`);
 									report.files.push( report_file_object );
 								}
 							} catch(error){
-								report_file_object.error = new Error(`MakeDir.sync threw an error: ${error}`);
+								report_file_object.error = new Error(`Path.dirname threw an error: ${error}`);
 								report.files.push( report_file_object );
 							}
 						} catch(error){
-							report_file_object.error = new Error(`Path.dirname threw an error: ${error}`);
+							report_file_object.error = new Error(`Path.join threw an error: ${error}`);
 							report.files.push( report_file_object );
 						}
 					} catch(error){
-						report_file_object.error = new Error(`Path.join threw an error: ${error}`);
+						report_file_object.error = new Error(`getDocumentationStringFromFilePathSync threw an error: ${error}`);
 						report.files.push( report_file_object );
 					}
-				} catch(error){
-					report_file_object.error = new Error(`getDocumentationStringFromFilePathSync threw an error: ${error}`);
-					report.files.push( report_file_object );
 				}
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `Multi-file report: ${Utility.inspect( report, false, null, true )}`});
+			} else{
+				return_error = new Error('"options.output" (`--output`) must be specified when using multi-file mode.');
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 			}
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `Multi-file report: ${Utility.inspect( report, false, null, true )}`});
+		} else if( options.input.length === 1 ){
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from a file.'});
+			if( typeof(options.input[0]) === 'string' ){
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: '${options.input}'`});
+				try{
+					input_string = FileSystem.readFileSync( options.input[0], 'utf8' );
+				} catch(error){
+					return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
+					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+				}
+			} else{
+				return_error = new Error('"options.input" is not a string.');
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+			}
 		} else{
-			return_error = new Error('"options.output" (`--output`) must be specified when using multi-file mode.');
+			return_error = new Error('"options.input" is an empty array?');
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 		}
 	} else{ //Single-file mode
@@ -764,19 +783,6 @@ async function main_Async( options = {} ){
 					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 				}
 			} else if( options.input != null ){
-				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from a file.'});
-				if( typeof(options.input) === 'string' ){
-					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: '${options.input}'`});
-					try{
-						input_string = FileSystem.readFileSync( options.input, 'utf8' );
-					} catch(error){
-						return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
-						Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-					}
-				} else{
-					return_error = new Error('"options.input" is not a string.');
-					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-				}
 			} else{
 				return_error = new Error('No input options specified.');
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
@@ -977,5 +983,6 @@ if(require.main === module){
 	exports.setLogger = setLogger;
 	exports.getDocumentationStringFromSourceString = getDocumentationStringFromSourceString;
 	exports.getDocumentationStringFromSourceBuffer = getDocumentationStringFromSourceBuffer;
+	exports.getDocumentationStringFromFilePathSync = getDocumentationStringFromFilePathSync;
 }
 

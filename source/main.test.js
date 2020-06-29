@@ -40,7 +40,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	//##Standard
 	const ChildProcess = require('child_process');
 	//##External
-	const TAP = require('tap');
+	const AVA = require('ava');
 //#Constants
 const FILENAME = 'extract-documentation-comments-test.js';
 const MODULE_NAME = 'ExtractDocumentationComments';
@@ -111,26 +111,77 @@ function setLogger( logger ){
 //Unit tests
 
 //CLI test
-TAP.test('CLI:HelpData', function(t){
+AVA.cb('CLI:HelpData', function(t){
+	var test_name = 'CLI:HelpData';
 	var process_object = ChildProcess.fork( 'source/main.js', ['-vVhc'], { silent: true } );
 	var actual_stdout = '';
 	var actual_stderr = '';
+	t.plan(1);
 	process_object.stdio[1].on('data', function( chunk ){
-		console.log( 'Received stdout chunk: ', chunk.toString('utf8') );
+		console.log(`Test: ${test_name} received stdout chunk: ${chunk.toString('utf8')}`);
 		actual_stdout += chunk.toString('utf8');
 	});
 	process_object.stdio[2].on('data', function( chunk ){
-		console.log( 'Received stderr chunk: ', chunk.toString('utf8') );
+		console.log(` Test: ${test_name} received stderr chunk: ${chunk.toString('utf8')}`);
 		actual_stderr += chunk.toString('utf8');
 	});
 	process_object.on('exit', function( code, signal ){
-		console.log(`Process exited with code: ${code} signal: ${signal} stdout: ${actual_stdout} stderr: ${actual_stderr}`);
+		console.log(`Test: ${test_name}: process exited with code: ${code} signal: ${signal} stdout: ${actual_stdout} stderr: ${actual_stderr}`);
+		if( code === 0 ){
+			t.pass();
+		} else{
+			t.fail();
+		}
+		t.end();
 	});
 });
-/*TAP.test('CLI:ClassicUnitTests', function(t){
+AVA.cb('CLI:ClassicUnitTests', function(t){
+	var test_name = 'CLI:ClassicUnitTests';
+	var process_object = ChildProcess.fork( 'source/main.js', ['-vx', '--test'], { silent: true } );
+	var actual_stdout = '';
+	var actual_stderr = '';
+	t.plan(1);
+	process_object.stdio[1].on('data', function( chunk ){
+		console.log(`Test: ${test_name} received stdout chunk: ${chunk.toString('utf8')}`);
+		actual_stdout += chunk.toString('utf8');
+	});
+	process_object.stdio[2].on('data', function( chunk ){
+		console.log(` Test: ${test_name} received stderr chunk: ${chunk.toString('utf8')}`);
+		actual_stderr += chunk.toString('utf8');
+	});
+	process_object.on('exit', function( code, signal ){
+		console.log(`Test: ${test_name}: process exited with code: ${code} signal: ${signal} stdout: ${actual_stdout} stderr: ${actual_stderr}`);
+		if( code === 0 ){
+			t.pass();
+		} else{
+			t.fail();
+		}
+		t.end();
+	});
 });
-TAP.test('CLI:MultiFileShellGlob', function(t){
-});*/
+AVA.cb('CLI:MultiFileShellGlob', function(t){
+	var test_name = 'CLI:MultiFileShellGlob';
+	var process_object = ChildProcess.fork( './source/main.js', ['-v', '-I', 'test/example-source-file.js', 'test/another-test-file.js', '-O', 'temp_docs'], { silent: true } );
+	var actual_stdout = '';
+	var actual_stderr = '';
+	process_object.stdio[1].on('data', function( chunk ){
+		console.log(`Test: ${test_name} received stdout chunk: ${chunk.toString('utf8')}`);
+		actual_stdout += chunk.toString('utf8');
+	});
+	process_object.stdio[2].on('data', function( chunk ){
+		console.log(` Test: ${test_name} received stderr chunk: ${chunk.toString('utf8')}`);
+		actual_stderr += chunk.toString('utf8');
+	});
+	process_object.on('exit', function( code, signal ){
+		console.log(`Test: ${test_name}: process exited with code: ${code} signal: ${signal} stdout: ${actual_stdout} stderr: ${actual_stderr}`);
+		if( code === 0 ){
+			t.pass();
+		} else{
+			t.fail();
+		}
+		t.end();
+	});
+});
 //#Exports and Execution
 if(require.main === module){
 } else{

@@ -474,7 +474,7 @@ Status:
 | --- | --- |
 | 0.2.2 | Introduced |
 */
-function getDocumentationStringFromFilePathSync( file_path, options = {},){
+function getDocumentationStringFromFilePathSync( file_path, options = {} ){
 	var arguments_array = Array.from(arguments);
 	var _return;
 	var return_error;
@@ -498,6 +498,7 @@ function getDocumentationStringFromFilePathSync( file_path, options = {},){
 	//Function
 	try{
 		file_buffer = FileSystem.readFileSync( file_path );
+		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `file_buffer: ${file_buffer.toString('utf8')}`});
 	} catch(error){
 		return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 		throw return_error;
@@ -505,6 +506,7 @@ function getDocumentationStringFromFilePathSync( file_path, options = {},){
 	if( file_buffer != null ){
 		try{
 			documentation_string = getDocumentationStringFromSourceBuffer( file_buffer, options );
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `documentation_string: ${documentation_string}`});
 		} catch(error){
 			return_error = new Error(`getDocumentationStringFromSourceString threw an error: ${error}`);
 			throw return_error;
@@ -750,70 +752,70 @@ async function main_Async( options = {} ){
 			return_error = new Error('"options.output" (`--output`) must be specified when using multi-file mode.');
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 		}
-	}
-	//Single-file mode
-	///Input
-	if( return_error === null ){
-		if( options.stdin === true ){
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from STDIN.'});
-			try{
-				input_string = await GetStream( process.stdin, 'utf8' );
-			} catch(error){
-				return_error = new Error(`GetStream threw an error: ${error}`);
-				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-			}
-		} else if( options.input != null ){
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from a file.'});
-			if( typeof(options.input) === 'string' ){
-				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: '${options.input}'`});
+	} else{ //Single-file mode
+		///Input
+		if( return_error === null ){
+			if( options.stdin === true ){
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from STDIN.'});
 				try{
-					input_string = FileSystem.readFileSync( options.input, 'utf8' );
+					input_string = await GetStream( process.stdin, 'utf8' );
 				} catch(error){
-					return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
+					return_error = new Error(`GetStream threw an error: ${error}`);
+					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+				}
+			} else if( options.input != null ){
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from a file.'});
+				if( typeof(options.input) === 'string' ){
+					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: '${options.input}'`});
+					try{
+						input_string = FileSystem.readFileSync( options.input, 'utf8' );
+					} catch(error){
+						return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
+						Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+					}
+				} else{
+					return_error = new Error('"options.input" is not a string.');
 					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 				}
 			} else{
-				return_error = new Error('"options.input" is not a string.');
+				return_error = new Error('No input options specified.');
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 			}
-		} else{
-			return_error = new Error('No input options specified.');
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 		}
-	}
-	///Transform
-	if( return_error === null ){
-		if( input_string !== '' && typeof(input_string) === 'string' ){
-			try{
-				output_string = getDocumentationStringFromSourceString( input_string, options );
-			} catch(error){
-				return_error = new Error(`getDocumentationStringFromSourceString threw an error: ${error}`);
-				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-			}
-		} else{
-			return_error = new Error('input_string is either null or not a string.');
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-		}
-	}
-	///Output
-	if( return_error === null ){
-		if( output_string !== '' && typeof(output_string) === 'string' ){
-			if( options.output != null && typeof(output_string) === 'string' ){
+		///Transform
+		if( return_error === null ){
+			if( input_string !== '' && typeof(input_string) === 'string' ){
 				try{
-					FileSystem.writeFileSync( options.output, output_string, 'utf8' );
+					output_string = getDocumentationStringFromSourceString( input_string, options );
 				} catch(error){
-					return_error = new Error(`FileSystem.writeFileSync threw an error: ${error}`);
+					return_error = new Error(`getDocumentationStringFromSourceString threw an error: ${error}`);
 					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 				}
 			} else{
-				if( options.stdout !== true ){
-					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'warn', message: 'No output options specified; defaulting to STDOUT.'});
-				}
-				console.log(output_string);
+				return_error = new Error('input_string is either null or not a string.');
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 			}
-		} else{
-			return_error = new Error('"output_string" is either null or not a string.');
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+		}
+		///Output
+		if( return_error === null ){
+			if( output_string !== '' && typeof(output_string) === 'string' ){
+				if( options.output != null && typeof(output_string) === 'string' ){
+					try{
+						FileSystem.writeFileSync( options.output, output_string, 'utf8' );
+					} catch(error){
+						return_error = new Error(`FileSystem.writeFileSync threw an error: ${error}`);
+						Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+					}
+				} else{
+					if( options.stdout !== true ){
+						Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'warn', message: 'No output options specified; defaulting to STDOUT.'});
+					}
+					console.log(output_string);
+				}
+			} else{
+				return_error = new Error('"output_string" is either null or not a string.');
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+			}
 		}
 	}
 

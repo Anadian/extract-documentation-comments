@@ -4,7 +4,7 @@
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
-    "test": "node source/main.js --test",
+    "test": "ava -v ./source/main.test.js",
     "lint": "eslint ./source/main.js",
     "generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
     "update-travis-config": "json2yaml --preserve-key-order ci/travis.json .travis.yml",
@@ -39,11 +39,11 @@
   },
   "homepage": "https://github.com/Anadian/extract-documentation-comments#readme",
   "devDependencies": {
+    "ava": "^3.9.0",
     "coveralls": "^3.0.11",
     "eslint": "^6.8.0",
     "nyc": "^15.0.1",
-    "standard-version": "^8.0.0",
-    "tap": "^14.10.7"
+    "standard-version": "^8.0.0"
   },
   "dependencies": {
     "application-log-winston-interface": "^1.0.5",

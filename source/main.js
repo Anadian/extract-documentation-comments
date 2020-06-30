@@ -43,7 +43,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	//##External
 	const GetStream = require('get-stream');
 	const MakeDir = require('make-dir');
-	const Globby = require('globby');
+	//const Globby = require('globby');
 	//const TAP = require('tap');
 
 //#Constants
@@ -499,7 +499,7 @@ function getDocumentationStringFromFilePathSync( file_path, options = {} ){
 	try{
 		file_buffer = FileSystem.readFileSync( file_path );
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `file_buffer: ${file_buffer.toString('utf8')}`});
-	} catch(error){
+	} catch(error)/* istanbul ignore next */{
 		return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 		throw return_error;
 	}
@@ -507,7 +507,7 @@ function getDocumentationStringFromFilePathSync( file_path, options = {} ){
 		try{
 			documentation_string = getDocumentationStringFromSourceBuffer( file_buffer, options );
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `documentation_string: ${documentation_string}`});
-		} catch(error){
+		} catch(error)/* istanbul ignore next */{
 			return_error = new Error(`getDocumentationStringFromSourceString threw an error: ${error}`);
 			throw return_error;
 		}
@@ -891,12 +891,12 @@ if(require.main === module){
 		{ name: 'no-quick-exit', alias: 'x', type: Boolean, description: 'Don\'t immediately exit after printing help, version, and/or config information.' },
 		//Input
 		{ name: 'stdin', alias: 'i', type: Boolean, description: 'Read input from STDIN.' },
-		{ name: 'input', alias: 'I', type: String, multiple: true, defaultOption: true, description: 'The path to the file to read input from.' },
-		{ name: 'input-glob', alias: 'G', type: String, description: '[wip] A glob literal as a string: will generate a documentation file for all source files matching this glob; the files will be place in the output directory named in `--output`. Remember to properly escape the string for your shell.' }, 
+		{ name: 'input', alias: 'I', type: String, multiple: true, defaultOption: true, description: 'The path to the file to read input from. Multiple paths can be specified with this option, doing so will activate multi-file mode: in this mode, `--output` must also be used and given the name of the directory place the extracted documentation for each input file.' },
+		//{ name: 'input-glob', alias: 'G', type: String, description: '[wip] A glob literal as a string: will generate a documentation file for all source files matching this glob; the files will be place in the output directory named in `--output`. Remember to properly escape the string for your shell.' }, 
 		{ name: 'test', alias: 't', type: Boolean, description: 'Run unit tests and exit.' },
 		//Output
 		{ name: 'stdout', alias: 'o', type: Boolean, description: 'Write output to STDOUT.' },
-		{ name: 'output', alias: 'O', type: String, description: 'The name of the file to write output to or, in the case of using `--input-glob`, the name of the directory to place the generated documentation files.' },
+		{ name: 'output', alias: 'O', type: String, description: 'The name of the file to write output to or, in the case of us passing multiple paths to `--input`, the name of the directory to place the generated documentation files.' },
 		{ name: 'pasteboard', alias: 'p', type: Boolean, description: '[Reserved] Copy output to pasteboard (clipboard).' },
 		//Config
 		{ name: 'config', alias: 'c', type: Boolean, description: 'Print search paths and configuration values to STDOUT.' },

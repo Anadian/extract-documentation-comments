@@ -109,7 +109,14 @@ function setLogger( logger ){
 	//Return
 }
 //Unit tests
-
+AVA('getDocumentationStringFromFilePathSync:invalid_file_path', function(t){
+	var test_name = 'getDocumentationStringFromFilePathSync:invalid_file_path';
+	t.throws( ExtractDocumentationComments.getDocumentationStringFromFilePathSync.bind( null, {}, {} ), { instanceOf: TypeError, code: 'ERR_INVALID_ARG_TYPE' } );
+});
+AVA('getDocumentationStringFromFilePathSync:invalid_options', function(t){
+	var test_name = 'getDocumentationStringFromFilePathSync:invalid_options';
+	t.throws( ExtractDocumentationComments.getDocumentationStringFromFilePathSync.bind( null, 'string', 'something' ), { instanceOf: TypeError, code: 'ERR_INVALID_ARG_TYPE' } );
+});
 //CLI test
 AVA.cb('CLI:HelpData', function(t){
 	var test_name = 'CLI:HelpData';

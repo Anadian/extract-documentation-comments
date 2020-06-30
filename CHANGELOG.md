@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.5](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.4...v0.2.5) (2020-06-30)
+
+
+### Tests
+
+* **getDocumentationStringFromFilePathSync:** Added parametre test for `getDocumentationStringFromFilePathSync`. ([4696eba](https://github.com/Anadian/extract-documentation-comments/commit/4696ebac799e70231b6d864be37f2158c1696a8f))
+
+
+### Documentation
+
+* **README.md:** Updated README to match the new CLI. ([f4c0e21](https://github.com/Anadian/extract-documentation-comments/commit/f4c0e218afc4bfb94518686fe3a4e0456454ba10))
+
 ### [0.2.4](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.3...v0.2.4) (2020-06-30)
 
 

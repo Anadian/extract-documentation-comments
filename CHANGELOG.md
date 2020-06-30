@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.3...v0.2.4) (2020-06-30)
+
+
+### Bug Fixes
+
+* **CLI:** Corrected `main_Async`s logic to fix a bug in the previous version. ([707c5fe](https://github.com/Anadian/extract-documentation-comments/commit/707c5fe1eac5f9a6c06d63185b8df75c088bd90c))
+
+
+### Chores
+
+* Slightly improved coverage. ([cac6cf3](https://github.com/Anadian/extract-documentation-comments/commit/cac6cf3e886051bec26fb758e7b783940feab720))
+
 ### [0.2.3](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.2...v0.2.3) (2020-06-29)
 
 

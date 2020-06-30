@@ -44,19 +44,24 @@ extract-documentation-comments
 
 Options
 
-  -h, --help                 Writes this help text to stdout.                                              
+  -h, --help                 Writes this help text to STDOUT.                                              
   -n, --noop                 [Reserved] Show what would be done without actually doing it.                 
-  -v, --verbose              Verbose output to stderr.                                                     
-  -V, --version              Writes version information to stdout.                                         
+  -v, --verbose              Verbose output to STDERR.                                                     
+  -V, --version              Writes version information to STDOUT.                                         
   -x, --no-quick-exit        Don't immediately exit after printing help, version, and/or config            
                              information.                                                                  
-  -i, --stdin                Read input from stdin.                                                        
-  -I, --input string         The path to the file to read input from.                                      
+  -i, --stdin                Read input from STDIN.                                                        
+  -I, --input string[]       The path to the file to read input from. Multiple paths can be specified with 
+                             this option, doing so will activate multi-file mode: in this mode,            
+                             `--output` must also be used and given the name of the directory place the    
+                             extracted documentation for each input file.                                  
   -t, --test                 Run unit tests and exit.                                                      
-  -o, --stdout               Write output to stdout.                                                       
-  -O, --output string        The name of the file to write output to.                                      
+  -o, --stdout               Write output to STDOUT.                                                       
+  -O, --output string        The name of the file to write output to or, in the case of us passing         
+                             multiple paths to `--input`, the name of the directory to place the generated 
+                             documentation files.                                                          
   -p, --pasteboard           [Reserved] Copy output to pasteboard (clipboard).                             
-  -c, --config               [Reserved] Print configuration values and information to stdout.              
+  -c, --config               Print search paths and configuration values to STDOUT.                        
   -C, --config-file string   [Reserved] Use the given config file instead of the default.                  
 ```
 # API

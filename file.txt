@@ -1,0 +1,12 @@
+[35mnote[39m: MainExecutionFunction: [35mLogger: console_stderr transport log level set to: debug[39m
+[32mdebug[39m: MainExecutionFunction: [32mSoft error: Error: Cannot find module '/home/cameron/dev/extract-documentation-comments/source/package.json'[39m
+[32mRequire stack:[39m
+[32m- /home/cameron/dev/extract-documentation-comments/source/main.js[39m
+[32mdebug[39m: main_Async: [32mreceived: [ { verbose: [33mtrue[32m, stdin: [33mtrue[32m, stdout: [33mtrue[32m }, [length]: [33m1[32m ][39m
+[34minfo[39m: main_Async: [34mReading input from STDIN.[39m
+[32mdebug[39m: MainExecutionFunction: [32mEnd of execution block.[39m
+[32mdebug[39m: getDocumentationStringFromSourceString: [32mreceived: /** example */[39m
+[32m,[object Object][39m
+[32mdebug[39m: getDocumentationStringFromSourceString: [32mmatches: /** example */, example [39m
+[32mdebug[39m: getDocumentationStringFromSourceString: [32mreturned:  example [39m
+[32m[39m

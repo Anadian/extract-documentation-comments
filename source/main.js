@@ -702,6 +702,7 @@ async function main_Async( options = {} ){
 		files: []
 	};
 	var report_file_object = {};
+	var multi_file_mode = false;
 	//Parametre checks
 	//Function
 	//Multi-file mode
@@ -709,6 +710,7 @@ async function main_Async( options = {} ){
 		if( options.input.length > 1 ){
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: ${options.input.toString('utf8')}`});
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: 'Multi-file mode activated.'});
+			multi_file_mode = true;
 			if( options.output != null && typeof(options.output) === 'string' ){
 				for( var i = 0; i < options.input.length; i++ ){
 					report_file_object = {
@@ -754,25 +756,9 @@ async function main_Async( options = {} ){
 				return_error = new Error('"options.output" (`--output`) must be specified when using multi-file mode.');
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 			}
-		} else if( options.input.length === 1 ){
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from a file.'});
-			if( typeof(options.input[0]) === 'string' ){
-				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: '${options.input}'`});
-				try{
-					input_string = FileSystem.readFileSync( options.input[0], 'utf8' );
-				} catch(error){
-					return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
-					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-				}
-			} else{
-				return_error = new Error('"options.input" is not a string.');
-				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-			}
-		} else{
-			return_error = new Error('"options.input" is an empty array?');
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-		}
-	} else{ //Single-file mode
+		} 
+	} //Single-file mode
+	if( multi_file_mode === false ){
 		///Input
 		if( return_error === null ){
 			if( options.stdin === true ){
@@ -784,6 +770,19 @@ async function main_Async( options = {} ){
 					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 				}
 			} else if( options.input != null ){
+				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from a file.'});
+				if( typeof(options.input[0]) === 'string' ){
+					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: '${options.input[0]}'`});
+					try{
+						input_string = FileSystem.readFileSync( options.input[0], 'utf8' );
+					} catch(error){
+						return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
+						Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+					}
+				} else{
+					return_error = new Error('"options.input" is not a string.');
+					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
+				}
 			} else{
 				return_error = new Error('No input options specified.');
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});

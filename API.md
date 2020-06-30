@@ -1,3 +1,4 @@
+
 # [extract-documentation-comments.js](source/main.js)
 > Simply extract documentation comments from a source file.
 
@@ -29,7 +30,11 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 > The type notation used in this documentation is based off of the [Google Closure type system](https://github.com/google/closure-compiler/wiki/Types-in-the-Closure-Type-System).
 
 > The status and feature lifecycle keywords used in this documentation are based off of my own standard [defined here](https://github.com/Anadian/FeatureLifeCycleStateStandard).
+
+
 ## Functions
+
+
 ### setLogger
 > Allows this module's functions to log the given logger object.
 
@@ -47,6 +52,8 @@ Status:
 | version | change |
 | --- | --- |
 | 0.0.0 | Introduced |
+
+
 ### getDocumentationStringFromSourceString
 > Returns a string containing only the contents of `\/** ... *\/` style documentation strings from the given source-file string.
 
@@ -71,6 +78,8 @@ Status:
 | --- | --- |
 | 0.1.6 | Revamped the parsing logic. |
 | 0.0.1 | Introduced |
+
+
 ### getDocumentationStringFromSourceString_Test (private)
 > Tests [getDocumentationStringFromSourceString](#getDocumentationStringFromSourceString); this function is not exported and should only be used internally by this module. 
  
@@ -89,6 +98,8 @@ Status:
 | --- | --- |
 | 0.1.7 | Cleaned up. |
 | 0.0.1 | Introduced |
+
+
 ### getDocumentationStringFromSourceBuffer
 > Returns a string containing only the contents of `\/** ... *\/` style documentation strings from the given source-file buffer.
 
@@ -114,6 +125,8 @@ Status:
 | --- | --- |
 | 0.1.7 | Cleaned up. |
 | 0.0.1 | Introduced |
+
+
 ### getDocumentationStringFromSourceBuffer_Test (private)
 > Tests [getDocumentationStringFromSourceBuffer](#getDocumentationStringFromSourceBuffer); this function is not exported and should only be used internally by this module. 
  
@@ -131,6 +144,61 @@ Status:
 | version | change |
 | --- | --- |
 | 0.0.1 | Introduced |
+
+
+### getDocumentationStringFromFilePathSync
+> Generates a documentation String from the source-code comments in the file at the given filepath.
+
+Parametres:
+| name | type | description |
+| --- | --- | --- |
+| file_path | {string} | The file path as a string to read and parse for documentation comments.  |
+| options | {?Object} | [Reserved] Additional run-time options. \[default: {}\] |
+
+Returns:
+| type | description |
+| --- | --- |
+| {string} | The documentation string for the given file. |
+
+Throws:
+| code | type | condition |
+| --- | --- | --- |
+| 'ERR_INVALID_ARG_TYPE' | {TypeError} | Thrown if a given argument isn't of the correct type. |
+
+Status:
+| version | change |
+| --- | --- |
+| 0.2.2 | Introduced |
+
+
+### generateDocumentationDirectoryFromFileGlobSync
+> Creates a documentation directory mirroring the structure of the file paths matching the given glob.
+
+Parametres:
+| name | type | description |
+| --- | --- | --- |
+| file_glob | {string} | The POSIX-y glob of files to be read and parsed to generate the documentation files in the given output directory.  |
+| output_directory | {?string} | The name of the output directory to create and place the documentation files in. If `null` or not specified, the value of `options.output` will be used; if neither are specified, an error will be thrown.  |
+| options | {?Object} | Additional run-time options. \[default: {}\] |
+
+Returns:
+| type | description |
+| --- | --- |
+| {Object} | A report detailing what actions succeeded and what failed. The `success` property will be true if everything is good. The `steps` property is a hiearchical breakdown of what files were created and any failures that occured. |
+
+Throws:
+| code | type | condition |
+| --- | --- | --- |
+| 'ERR_INVALID_ARG_TYPE' | {TypeError} | Thrown if a given argument isn't of the correct type. |
+| 'ERR_INVALID_ARG_VALUE' | {Error} | Thrown if no output directory is specified in either the `output_directory` parametre or `options.output`. |
+| 'ERR_INVALID_RETURN_VALUE' | {Error} | Thrown if the glob doesn't produce a valid array of file paths. |
+
+Status:
+| version | change |
+| --- | --- |
+| 0.2.2 | Introduced |
+
+
 ### main_Async (private)
 > The main function when the script is run as an executable without the `--test` command-line option. Not exported and should never be manually called.
 
@@ -143,6 +211,8 @@ Status:
 | version | change |
 | --- | --- |
 | 0.0.1 | Introduced |
+
+
 ### main_Async_Test (private)
 > The main function when the script is run as an executable **with** the `--test` command-line option. Runs all of the other `*_Test()`-type unit-test functions in this module. Not exported and should never be manually called.
 
@@ -155,3 +225,4 @@ Status:
 | version | change |
 | --- | --- |
 | 0.0.1 | Introduced |
+

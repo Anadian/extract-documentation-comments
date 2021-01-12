@@ -7,7 +7,7 @@
     "test": "ava -v ./source/main.test.js",
     "lint": "eslint ./source/main.js",
     "generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
-    "update-travis-config": "json2yaml --preserve-key-order ci/github-actions.json .git/workflows/ci.yml",
+    "update-config": "json2yaml --preserve-key-order ci/github-actions.json .git/workflows/ci.yml",
     "release": "standard-version",
     "publish-release": "git push --follow-tags origin master && npm publish"
   },

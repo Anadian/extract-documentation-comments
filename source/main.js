@@ -258,8 +258,8 @@ function getDocumentationStringFromSourceString_Test(){
 		} else{
 			success_test = new Error(`success test failed: actual output: '${actual_output_string}' didn't match expected output '${expected_output_string}'`);
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: success_test.message});
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: `Leven difference ${Leven(actual_output, expected_output)}`});
-			Assert.equal(actual_output, expected_output);
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: `Leven difference ${Leven(actual_output_string, expected_output_string)}`});
+			Assert.equal(actual_output_string, expected_output_string);
 		}
 	} catch(error){
 		success_test = error;

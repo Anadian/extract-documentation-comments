@@ -116,6 +116,12 @@ function setLogger( logger ){
 	//Return
 }
 
+function readFileSyncBinaryMode( file_path, encoding = null ){
+	var file_descriptor = FileSystem.openSync( file_path, 'rb' );
+	var file_string = FileSystem.readFileSync( file_descriptor, encoding );
+	FileSystem.closeSync( file_descriptor );
+	return file_string;
+}
 /**
 ### getDocumentationStringFromSourceString
 > Returns a string containing only the contents of `\/** ... *\/` style documentation strings from the given source-file string.
@@ -235,7 +241,8 @@ function getDocumentationStringFromSourceString_Test(){
 			throw return_error;
 		}
 		try{
-			sample_input_string = FileSystem.readFileSync( sample_input_path, { encoding: 'utf8', flag: 'rb' } );
+			//sample_input_string = FileSystem.readFileSync( sample_input_path, { encoding: 'utf8', flag: 'rb' } );
+			sample_input_string = readFileSyncBinaryMode( sample_input_path, 'utf8' );
 		} catch(error){
 			return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 			throw return_error;
@@ -247,7 +254,8 @@ function getDocumentationStringFromSourceString_Test(){
 			throw return_error;
 		}
 		try{
-			expected_output_string = FileSystem.readFileSync( expected_output_path, { encoding: 'utf8', flag: 'rb' } );
+			//expected_output_string = FileSystem.readFileSync( expected_output_path, { encoding: 'utf8', flag: 'rb' } );
+			expected_output_string = readFileSyncBinaryMode( expected_output_path, 'utf8' );
 		} catch(error){
 			return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 			throw return_error;

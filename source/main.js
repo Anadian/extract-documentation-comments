@@ -235,7 +235,7 @@ function getDocumentationStringFromSourceString_Test(){
 			throw return_error;
 		}
 		try{
-			sample_input_string = FileSystem.readFileSync( sample_input_path, 'utf8' );
+			sample_input_string = FileSystem.readFileSync( sample_input_path, { encoding: 'utf8', flag: 'rb' } );
 		} catch(error){
 			return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 			throw return_error;
@@ -247,7 +247,7 @@ function getDocumentationStringFromSourceString_Test(){
 			throw return_error;
 		}
 		try{
-			expected_output_string = FileSystem.readFileSync( expected_output_path, 'utf8' );
+			expected_output_string = FileSystem.readFileSync( expected_output_path, { encoding: 'utf8', flag: 'rb' } );
 		} catch(error){
 			return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 			throw return_error;

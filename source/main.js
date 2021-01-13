@@ -227,6 +227,7 @@ function getDocumentationStringFromSourceString_Test(){
 	try {
 		try{
 			sample_input_path = Path.resolve( __dirname, '../test/example-source-file.js' );
+			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `sample_input_path: ${sample_input_path}`});
 		} catch(error){
 			return_error = new Error(`Path.resolve threw an error: ${error}`);
 			throw return_error;

@@ -42,7 +42,6 @@
     "ava": "^3.15.0",
     "coveralls": "^3.1.0",
     "eslint": "^6.8.0",
-    "leven": "^3.1.0",
     "nyc": "^15.1.0",
     "standard-version": "^9.1.0"
   },
@@ -81,16 +80,16 @@
   },
   "standard-version": {
     "types": [
-		{
-			"type": "build",
-			"section": "Build",
-			"hidden": false
-		},
-	  {
-		"type": "ci",
-		"section": "Continuous Integration",
-		"hidden": false
-	  },
+      {
+        "type": "build",
+        "section": "Build",
+        "hidden": false
+      },
+      {
+        "type": "ci",
+        "section": "Continuous Integration",
+        "hidden": false
+      },
       {
         "type": "chore",
         "section": "Chores",

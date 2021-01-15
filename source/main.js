@@ -40,12 +40,12 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	const FileSystem = require('fs');
 	const Path = require('path')
 	const Utility = require('util');
-	const Assert = require('assert');
+	//const Assert = require('assert');
 	const OperatingSystem = require('os');
 	//##External
 	const GetStream = require('get-stream');
 	const MakeDir = require('make-dir');
-	const Leven = require('leven');
+	//const Leven = require('leven');
 	//const Globby = require('globby');
 	//const TAP = require('tap');
 
@@ -267,8 +267,8 @@ function getDocumentationStringFromSourceString_Test(){
 		} else{
 			success_test = new Error(`success test failed: actual output: '${actual_output_string}' didn't match expected output '${expected_output_string}'`);
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: success_test.message});
-			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: `Leven difference ${Leven(actual_output_string, expected_output_string)}`});
-			Assert.equal(actual_output_string, expected_output_string);
+			//Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: `Leven difference ${Leven(actual_output_string, expected_output_string)}`});
+			//Assert.equal(actual_output_string, expected_output_string);
 		}
 	} catch(error){
 		success_test = error;

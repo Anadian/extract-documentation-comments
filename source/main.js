@@ -41,6 +41,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	const Path = require('path')
 	const Utility = require('util');
 	const Assert = require('assert');
+	const OperatingSystem = require('os');
 	//##External
 	const GetStream = require('get-stream');
 	const MakeDir = require('make-dir');
@@ -171,7 +172,7 @@ function getDocumentationStringFromSourceString( source_string, options = {} ){
 	matches_array = Array.from(matches_iterator);
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `matches: ${matches_array}`});
 	for( var index = 0; index < matches_array.length; index++ ){
-		documentation += (matches_array[index][1])+'\n'; //Crude and will be polished up soon.
+		documentation += (matches_array[index][1])+OperatingSystem.EOL; //Crude and will be polished up soon.
 	}
 	_return = documentation;
   /*regex = new RegExp(/\/\*\*[\W\w\s\r\n*]*?\*\//, 'gs');

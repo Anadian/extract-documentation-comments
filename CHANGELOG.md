@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.5...v0.2.6) (2021-01-15)
+
+
+### Features
+
+* **ci:** Added proper Windows CI via GitHubActions ([c156a65](https://github.com/Anadian/extract-documentation-comments/commit/c156a659c283058e770b146a716a9685889352aa))
+
+
+### Refactoring
+
+* **test:** Debugging Windows testing. ([da7ea1b](https://github.com/Anadian/extract-documentation-comments/commit/da7ea1b12b86c1fdfb076f82aa79ffb5efe3d0d9))
+
+
+### Chores
+
+* Fully updated standard-version config to be compatible with conventione commit standard. ([68b6e4e](https://github.com/Anadian/extract-documentation-comments/commit/68b6e4e06533cf880300bd574819d3eb3b8936a8))
+* More recent test. ([375c4df](https://github.com/Anadian/extract-documentation-comments/commit/375c4df10dd8c8ebb529e2cf5197bcbd5ac65d08))
+* **ci:** Actually updated the build targets. ([cdff42a](https://github.com/Anadian/extract-documentation-comments/commit/cdff42aa79d00fdb2973954c73ebd8c93d15e6cb))
+* **ci:** Added more build targets for GHA. ([583050a](https://github.com/Anadian/extract-documentation-comments/commit/583050a802e217a586db6294796f79104dd8aad0))
+* **ci:** Alright that should fix the issue. ([69b4daf](https://github.com/Anadian/extract-documentation-comments/commit/69b4daf45e3e5a745f1f06a816d4aa66f83f4717))
+* **ci:** GHA doesn't seem to be working. ([c0c226b](https://github.com/Anadian/extract-documentation-comments/commit/c0c226b261d548e01b8729aa9e46fb3bd312f0db))
+* **ci:** Trying out GitHub Actions for CI. ([0ecc006](https://github.com/Anadian/extract-documentation-comments/commit/0ecc006d650714c1211f0d5ddeb389bf1952c9ab))
+* **config:** Added an addition ci type for standard-version commit messages. ([e2866b6](https://github.com/Anadian/extract-documentation-comments/commit/e2866b67768188f1dddf6a86a940efb485cd3017))
+* **deps:** Updated dependencies. ([e2fb50a](https://github.com/Anadian/extract-documentation-comments/commit/e2fb50acf6893620cde9130bc0ed0382874297af))
+* **deps-dev:** bump standard-version from 8.0.0 to 8.0.1 ([a5f1f58](https://github.com/Anadian/extract-documentation-comments/commit/a5f1f5873e5667666b1aba8aaee5371ab7dcb392))
+
+
+### Tests
+
+* Attempting to specify binary mode for reading files on Windows. ([96533e4](https://github.com/Anadian/extract-documentation-comments/commit/96533e47c71367f84d7af6b69a20f0ca5741fbb9))
+* Now using a wrapper function. ([7d90ec8](https://github.com/Anadian/extract-documentation-comments/commit/7d90ec832ac1f133f1d3ea38c317c028f871b3ad))
+* Trying to use OS EOL. ([ad33a2b](https://github.com/Anadian/extract-documentation-comments/commit/ad33a2b1a8da7384d23fbfdacd00bd6e95ef14f6))
+* **windows:** Added more debug directives for testing on Windows. ([758ddb4](https://github.com/Anadian/extract-documentation-comments/commit/758ddb42b135f32d0d5f140e3a3d785c6ce5a9e8))
+
 ### [0.2.5](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.4...v0.2.5) (2020-06-30)
 
 

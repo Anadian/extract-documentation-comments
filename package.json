@@ -4,6 +4,7 @@
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
+    "build": "babel --out-dir Output source/*",
     "test": "ava -v ./source/main.test.js",
     "lint": "eslint ./source/main.js",
     "generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
@@ -43,6 +44,7 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "ava": "^3.15.0",
+    "core-js": "^3.8.2",
     "coveralls": "^3.1.0",
     "eslint": "^6.8.0",
     "nyc": "^15.1.0",
@@ -137,13 +139,16 @@
   },
   "babel": {
     "presets": [
-      "@babel/env",
-      {
-        "targets": {
-          "node": 8
-        },
-        "useBuiltIns": "usage"
-      }
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "node": 8
+          },
+          "useBuiltIns": "usage",
+          "corejs": "3.8.2"
+        }
+      ]
     ],
     "plugins": []
   }

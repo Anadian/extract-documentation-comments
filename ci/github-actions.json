@@ -37,7 +37,8 @@
 						"node-version": "${{ matrix.node }}"
 					}
 				},
-				{ "run": "npm install" }
+				{ "run": "npm install" },
+				{ "run": "npm test" }
 			]
 		},
 		"ci-linux": {

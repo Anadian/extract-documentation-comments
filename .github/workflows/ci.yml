@@ -29,6 +29,7 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - run: npm install
+    - run: npm test
   ci-linux:
     runs-on: ubuntu-latest
     steps:

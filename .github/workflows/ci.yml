@@ -44,7 +44,7 @@ jobs:
         - 9
         - 10
         - 11
-    needs: setup-${{ matrix.os }}-node-${{ matrix.node }}
+    needs: setup
     name: build-${{ matrix.os }}-node-${{ matrix.node }}
     runs-on: ${{ matrix.os }}
     steps:
@@ -64,7 +64,7 @@ jobs:
         - 9
         - 10
         - 11
-    needs: build-${{ matrix.os }}-node-${{ matrix.node }}
+    needs: build
     name: test-build-${{ matrix.os }}-node-${{ matrix.node }}
     runs-on: ${{ matrix.os }}
     steps:
@@ -83,7 +83,7 @@ jobs:
         - 12
         - 13
         - 14
-    needs: setup-${{ matrix.os }}-node-${{ matrix.node }}
+    needs: setup
     name: test-${{ matrix.os }}-node-${{ matrix.node }}
     runs-on: ${{ matrix.os }}
     steps:

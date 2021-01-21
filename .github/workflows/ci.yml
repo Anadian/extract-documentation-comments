@@ -29,8 +29,8 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - run: npm install
-    - run: npm transpile
-    - run: npm transpiled-test
+    - run: npm run transpile
+    - run: npm run transpiled-test
   source:
     strategy:
       matrix:

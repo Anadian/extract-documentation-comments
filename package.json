@@ -6,11 +6,11 @@
   "scripts": {
     "transpile": "babel --out-dir Output source/*",
     "test": "ava -v ./source/main.test.js",
-	"transpiled-test": "ava -v ./Output/main.test.js",
+    "transpiled-test": "ava -v ./Output/main.test.js",
     "lint": "eslint ./source/main.js",
     "generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
     "update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
-	"update-deps": "npm-check-updates -u",
+    "update-deps": "npm-check-updates -u",
     "release": "standard-version",
     "publish-release": "git push --follow-tags origin master && npm publish"
   },
@@ -42,6 +42,7 @@
   },
   "homepage": "https://github.com/Anadian/extract-documentation-comments#readme",
   "devDependencies": {
+    "@ava/babel": "^1.0.1",
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -140,6 +141,9 @@
         "hidden": false
       }
     ]
+  },
+  "ava": {
+    "babel": true
   },
   "babel": {
     "presets": [

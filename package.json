@@ -4,7 +4,7 @@
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
-    "transpile": "babel --out-dir Output source/*",
+    "transpile": "babel --out-dir Output source/main.js",
     "test": "ava -v ./source/main.test.js",
     "transpiled-test": "ava -v ./Output/main.test.js",
     "lint": "eslint ./source/main.js",
@@ -154,7 +154,7 @@
             "node": 8
           },
           "useBuiltIns": "usage",
-          "corejs": "3.8.2"
+          "corejs": "3.8.3"
         }
       ]
     ],

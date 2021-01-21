@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.7](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.6...v0.2.7) (2021-01-21)
+
+
+### Continuous Integration
+
+* Added functional backwards compatibility via babel transpilation. ([5a278ce](https://github.com/Anadian/extract-documentation-comments/commit/5a278cefeb43349933c960363a16566df58e89c2))
+* Alright, let's see what happens now. ([531a4bd](https://github.com/Anadian/extract-documentation-comments/commit/531a4bddcf043611df78a1bd14bad324354c07cb))
+* Coverage reporting should work properly now. ([011b272](https://github.com/Anadian/extract-documentation-comments/commit/011b272bc9abf2a2427e2f21bcbb565d39bb85ad))
+* Fixed command typo in transpiled tests. ([dd3ca54](https://github.com/Anadian/extract-documentation-comments/commit/dd3ca54ce7d047e64879c9c0ddb0794639f6ce77))
+* Forgot to update config for last commit. ([7b97b31](https://github.com/Anadian/extract-documentation-comments/commit/7b97b31ba0248cec8a87b395174c9bd8adb0300c))
+* More robust CI via babel. ([ad5ee0e](https://github.com/Anadian/extract-documentation-comments/commit/ad5ee0edcc75e6175ba64e2a84cf9b210a8f8c20))
+* Now testing across the matrix. ([cafed76](https://github.com/Anadian/extract-documentation-comments/commit/cafed7617e7d9051c70baad3498a22762e189125))
+* Testing buiold matrix in GitHub Actions. ([3a4bb96](https://github.com/Anadian/extract-documentation-comments/commit/3a4bb96eefc9de6d3f35a7f4b402df11f98ce558))
+* Updating Coveralls for GitHub Actions. ([d237d46](https://github.com/Anadian/extract-documentation-comments/commit/d237d46dba5fcd65f9f43ffb1f5cd861c159e71e))
+
+
+### Tests
+
+* Added Ava/Babel support. ([2f4425d](https://github.com/Anadian/extract-documentation-comments/commit/2f4425d261b61dc923ebd8f0f7e6a28b5c039849))
+
+
+### Chores
+
+* About to try running babel. ([42f641f](https://github.com/Anadian/extract-documentation-comments/commit/42f641f8d6102ea9c0406f4670c105b251d76afa))
+* One last change before merge. ([cbdebe6](https://github.com/Anadian/extract-documentation-comments/commit/cbdebe658774015f4931b5bce8123082eb0d9612))
+* Regenerated config and updated CI status badge in the README.md ([6b9223c](https://github.com/Anadian/extract-documentation-comments/commit/6b9223cfade02db52ef5058d48afe9b06e327531))
+* Removing unused Ava config. ([3f36c6c](https://github.com/Anadian/extract-documentation-comments/commit/3f36c6c292fd68441048317fad766314e89ec733))
+* Should be done with this whole ordeal. ([bec613e](https://github.com/Anadian/extract-documentation-comments/commit/bec613ee0a93ed4004ba52b57f80d15537cec5ba))
+* Something broke? ([a6bb495](https://github.com/Anadian/extract-documentation-comments/commit/a6bb495bdad10be0585a48304e076561b66d9b90))
+* **deps:** Updated dependencies to latest versions. ([94ba7c9](https://github.com/Anadian/extract-documentation-comments/commit/94ba7c9d693bbfcbb48879dc70e6e4a76a8ae682))
+* Switching to HJSON-based config, ([a5c19f7](https://github.com/Anadian/extract-documentation-comments/commit/a5c19f7f2d08f18abfe3d198ec1fc7c987e481df))
+
 ### [0.2.6](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.5...v0.2.6) (2021-01-15)
 
 

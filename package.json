@@ -145,9 +145,6 @@
       }
     ]
   },
-  "ava": {
-    "babel": false
-  },
   "babel": {
     "presets": [
       [

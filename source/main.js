@@ -559,6 +559,7 @@ Throws:
 Status:
 | version | change |
 | --- | --- |
+| 0.2.8 | Obsolete |
 | 0.2.2 | Introduced |
 */
 /* istanbul ignore next */

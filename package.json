@@ -66,6 +66,9 @@
   "bin": {
     "extract-documentation-comments": "./source/main.js"
   },
+  "engines": {
+	  "node": ">=12"
+  },
   "eslintConfig": {
     "env": {
       "commonjs": true,

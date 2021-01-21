@@ -5,7 +5,7 @@
 		"pull_request"
 	],
 	"jobs": {
-		"transpiled": {
+		/*"transpiled": {
 			strategy: {
 				matrix: {
 					os: [
@@ -41,7 +41,7 @@
 				{ "run": "npm run transpile" },
 				{ "run": "npm run transpiled-test" }
 			]
-		},
+		},*/
 		"source": {
 			"strategy": {
 				"matrix": {
@@ -193,8 +193,9 @@
 				{ "run": "npm test" }
 			]
 		},*/
-		"ci-linux": {
+		"coverage": {
 			"runs-on": "ubuntu-latest",
+			"needs": "source",
 			"steps": [
 				{ "uses": "actions/checkout@v2" },
 				{ "uses": "actions/setup-node@v2" },

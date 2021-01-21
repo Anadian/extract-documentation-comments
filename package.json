@@ -44,10 +44,11 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "ava": "^3.15.0",
-    "core-js": "^3.8.2",
+    "core-js": "^3.8.3",
     "coveralls": "^3.1.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.18.0",
     "hjson": "^3.2.2",
+    "npm-check-updates": "^11.0.0",
     "nyc": "^15.1.0",
     "standard-version": "^9.1.0"
   },
@@ -56,9 +57,8 @@
     "command-line-args": "^5.1.1",
     "command-line-usage": "^6.1.1",
     "env-paths": "^2.2.0",
-    "get-stream": "^5.2.0",
-    "make-dir": "^3.1.0",
-    "npm-check-updates": "^11.0.0"
+    "get-stream": "^6.0.0",
+    "make-dir": "^3.1.0"
   },
   "bin": {
     "extract-documentation-comments": "./source/main.js"

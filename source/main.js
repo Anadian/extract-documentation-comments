@@ -533,7 +533,7 @@ function getDocumentationStringFromFilePathSync( file_path, options = {} ){
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `returned: ${_return}`});
 	return _return;
 }
-/**
+/*
 ### generateDocumentationDirectoryFromFileGlobSync
 > Creates a documentation directory mirroring the structure of the file paths matching the given glob.
 
@@ -561,8 +561,8 @@ Status:
 | --- | --- |
 | 0.2.8 | Obsolete |
 | 0.2.2 | Introduced |
-*/
-/* istanbul ignore next */
+*
+/* istanbul ignore next *
 function generateDocumentationDirectoryFromFileGlobSync( file_glob, output_directory, options = {} ){
 	var arguments_array = Array.from(arguments);
 	var _return;
@@ -686,7 +686,7 @@ function generateDocumentationDirectoryFromFileGlobSync( file_glob, output_direc
 	//Return
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `returned: ${_return}`});
 	return _return;
-}
+}*/
 /**
 ### main_Async (private)
 > The main function when the script is run as an executable without the `--test` command-line option. Not exported and should never be manually called.

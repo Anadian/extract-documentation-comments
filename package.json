@@ -4,11 +4,13 @@
   "description": "Simply extract documentation comments from a source file.",
   "main": "source/main.js",
   "scripts": {
-    "build": "babel --out-dir Output source/*",
+    "transpile": "babel --out-dir Output source/*",
     "test": "ava -v ./source/main.test.js",
+	"transpiled-test": "ava -v ./Output/main.test.js",
     "lint": "eslint ./source/main.js",
     "generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
     "update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
+	"update-deps": "npm-check-updates -u",
     "release": "standard-version",
     "publish-release": "git push --follow-tags origin master && npm publish"
   },

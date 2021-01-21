@@ -3,7 +3,7 @@ name: ci
 - push
 - pull_request
 jobs:
-  setup:
+  transpiled:
     strategy:
       matrix:
         os:
@@ -21,7 +21,7 @@ jobs:
         - 12
         - 13
         - 14
-    name: setup-${{ matrix.os }}-node-${{ matrix.node }}
+    name: transpiled-${{ matrix.os }}-node-${{ matrix.node }}
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
@@ -29,47 +29,9 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - run: npm install
-  build:
-    strategy:
-      matrix:
-        os:
-        - ubuntu-16.04
-        - ubuntu-latest
-        - macos-10.15
-        - macos-latest
-        - windows-2016
-        - windows-latest
-        node:
-        - 8
-        - 9
-        - 10
-        - 11
-    needs: setup
-    name: build-${{ matrix.os }}-node-${{ matrix.node }}
-    runs-on: ${{ matrix.os }}
-    steps:
-    - run: npm run build
-  test-build:
-    strategy:
-      matrix:
-        os:
-        - ubuntu-16.04
-        - ubuntu-latest
-        - macos-10.15
-        - macos-latest
-        - windows-2016
-        - windows-latest
-        node:
-        - 8
-        - 9
-        - 10
-        - 11
-    needs: build
-    name: test-build-${{ matrix.os }}-node-${{ matrix.node }}
-    runs-on: ${{ matrix.os }}
-    steps:
-    - run: ava -v Output/main.test.js
-  test:
+    - run: npm transpile
+    - run: npm transpiled-test
+  source:
     strategy:
       matrix:
         os:
@@ -83,10 +45,14 @@ jobs:
         - 12
         - 13
         - 14
-    needs: setup
-    name: test-${{ matrix.os }}-node-${{ matrix.node }}
+    name: source-${{ matrix.os }}-node-${{ matrix.node }}
     runs-on: ${{ matrix.os }}
     steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node }}
+    - run: npm install
     - run: npm test
   ci-linux:
     runs-on: ubuntu-latest
@@ -99,17 +65,3 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: lcov.txt
-  ci-macos:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-    - run: npm install
-    - run: npm test
-  ci-windows:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-    - run: npm install
-    - run: npm test

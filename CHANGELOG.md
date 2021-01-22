@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.8](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.7...v0.2.8) (2021-01-22)
+
+
+### Bug Fixes
+
+* Obsoleteing `generateDocumentationDirectoryFromFileGlobSync` ([fe24355](https://github.com/Anadian/extract-documentation-comments/commit/fe243550120f513077f34059864057d5f9c0afd3))
+
+
+### Documentation
+
+* Removed obsolete function from API.md ([a428da5](https://github.com/Anadian/extract-documentation-comments/commit/a428da590df7ec8bcb0f123a0b23607e9a55ccf2))
+
 ### [0.2.7](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.6...v0.2.7) (2021-01-21)
 
 

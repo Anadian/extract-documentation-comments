@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.9...v0.3.0) (2021-02-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added proper support for Latin-1 Supplemental characters.
+
+### Features
+
+* Added proper support for Latin-1 Supplemental characters. ([70c84b4](https://github.com/Anadian/extract-documentation-comments/commit/70c84b4941453b53564702d8b47b6f349cbafc82))
+
 ### [0.2.9](https://github.com/Anadian/extract-documentation-comments/compare/v0.2.8...v0.2.9) (2021-02-13)
 
 

@@ -167,7 +167,8 @@ function getDocumentationStringFromSourceString( source_string, options = {} ){
 		throw return_error;
 	}
 	//Function
-	regex = new RegExp('/\\*\\*([\\t\\n\\r -~]*?)\\*/', 'gs');
+	regex = new RegExp('/\\*\\*([\\t\\n\\r -~\u00A1-\u00AC\u00AE-\u00FF]*?)\\*/', 'gsu');
+	//regex = new RegExp('/\\*\\*([\\t\\n\\r -~\241-\254\256-\377]*?)\\*/', 'gsu');
 	matches_iterator = source_string.matchAll(regex);
 	matches_array = Array.from(matches_iterator);
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `matches: ${matches_array}`});

@@ -146,6 +146,7 @@ Throws:
 Status:
 | version | change |
 | --- | --- |
+| 0.2.9 | Added Latin-1 Supplemental character support. |
 | 0.1.6 | Revamped the parsing logic. |
 | 0.0.1 | Introduced |
 */

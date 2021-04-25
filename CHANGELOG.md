@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/Anadian/extract-documentation-comments/compare/v0.3.3...v0.3.4) (2021-04-25)
+
+
+### Continuous Integration
+
+* Improving coverage on the `main` branch. ([dcfa6f6](https://github.com/Anadian/extract-documentation-comments/commit/dcfa6f65dc5b213515b7ea18202a3d40c89a8c2c))
+
 ### [0.3.3](https://github.com/Anadian/extract-documentation-comments/compare/v0.3.2...v0.3.3) (2021-04-25)
 
 

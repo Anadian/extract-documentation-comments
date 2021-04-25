@@ -67,6 +67,9 @@ if(require.main === module){
 var Logger = { 
 	log: () => {
 		return null;
+	},
+	setConsoleLogLevel: () => {
+		return null;
 	}
 };
 /**
@@ -925,15 +928,25 @@ if(require.main === module){
 	var source_dirname = '';
 	var parent_dirname = '';
 	var package_path = '';
+	var logger = null;
 	//Logger
 	try{ 
 		MakeDir.sync( EnvironmentPaths.log );
 	} catch(error)/* istanbul ignore next */{
 		console.error('MakeDir.sync threw: %s', error);
 	}
-	function_return = ApplicationLogWinstonInterface.InitLogger('debug.log', EnvironmentPaths.log);
-	if( function_return[0] === 0 ){
-		setLogger( function_return[1] );
+	try{
+		logger = ApplicationLogWinstonInterface.initWinstonLogger('debug.log', EnvironmentPaths.log);
+		try{
+			setLogger( logger );
+		} catch(error){
+			return_error = new Error(`setLogger threw an error: ${error}`);
+			console.error(return_error);
+		}
+	} catch(error){
+		return_error = new Error(`ApplicationLogWinstonInterface.initWinstonLogger threw an error: ${error}`);
+		console.error(return_error);
+		//throw return_error;
 	}
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: 'Start of execution block.'});
 	//Options
@@ -941,7 +954,8 @@ if(require.main === module){
 	//Config
 	/* istanbul ignore next */
 	if( Options.verbose === true ){
-		Logger.real_transports.console_stderr.level = 'debug';
+		//Logger.real_transports.console_stderr.level = 'debug';
+		Logger.setConsoleLogLevel( 'debug' );
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: `Logger: console_stderr transport log level set to: ${Logger.real_transports.console_stderr.level}`});
 	}
 	///Load package.json

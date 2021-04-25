@@ -939,11 +939,11 @@ if(require.main === module){
 		logger = ApplicationLogWinstonInterface.initWinstonLogger('debug.log', EnvironmentPaths.log);
 		try{
 			setLogger( logger );
-		} catch(error){
+		} catch(error)/* istanbul ignore next */{
 			return_error = new Error(`setLogger threw an error: ${error}`);
 			console.error(return_error);
 		}
-	} catch(error){
+	} catch(error)/* istanbul ignore next */{
 		return_error = new Error(`ApplicationLogWinstonInterface.initWinstonLogger threw an error: ${error}`);
 		console.error(return_error);
 		//throw return_error;

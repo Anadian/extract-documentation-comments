@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/Anadian/extract-documentation-comments/compare/v0.3.6...v0.3.7) (2021-05-13)
+
+
+### Chores
+
+* **deps:** Updating `application-log-winston-interface`. ([e6f708c](https://github.com/Anadian/extract-documentation-comments/commit/e6f708cff124b2e7c28d84d0e7090f47c6810787))
+
 ### [0.3.6](https://github.com/Anadian/extract-documentation-comments/compare/v0.3.5...v0.3.6) (2021-05-13)
 
 

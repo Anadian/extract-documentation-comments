@@ -10,7 +10,7 @@
     "lint": "eslint ./source/main.js",
     "generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
     "update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
-    "update-deps": "npm-check-updates -u",
+    "update-deps": "npm-check-updates -ux env-paths",
     "release": "standard-version",
     "publish-release": "git push --follow-tags origin main && npm publish"
   },
@@ -51,7 +51,7 @@
     "standard-version": "^9.3.1"
   },
   "dependencies": {
-    "application-log-winston-interface": "^2.0.4",
+    "application-log-winston-interface": "^2.0.5",
     "command-line-args": "^5.2.0",
     "command-line-usage": "^6.1.1",
     "env-paths": "^2.2.1",

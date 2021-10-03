@@ -911,12 +911,12 @@ if(require.main === module){
 		{ name: 'no-quick-exit', alias: 'x', type: Boolean, description: 'Don\'t immediately exit after printing help, version, and/or config information.' },
 		//Input
 		{ name: 'stdin', alias: 'i', type: Boolean, description: 'Read input from STDIN.' },
-		{ name: 'input', alias: 'I', type: String, multiple: true, defaultOption: true, description: 'The path to the file to read input from. Multiple paths can be specified with this option, doing so will activate multi-file mode: in this mode, `--output` must also be used and given the name of the directory place the extracted documentation for each input file.' },
+		{ name: 'input', alias: 'I', type: String, multiple: true, defaultOption: true, description: 'The path to the file to read input from. Multiple paths can be specified with this option, doing so will activate multi-file mode: in this mode, `--output` must also be used and given the name of the directory to place the extracted documentation for each input file.' },
 		//{ name: 'input-glob', alias: 'G', type: String, description: '[wip] A glob literal as a string: will generate a documentation file for all source files matching this glob; the files will be place in the output directory named in `--output`. Remember to properly escape the string for your shell.' }, 
 		{ name: 'test', alias: 't', type: Boolean, description: 'Run unit tests and exit.' },
 		//Output
 		{ name: 'stdout', alias: 'o', type: Boolean, description: 'Write output to STDOUT.' },
-		{ name: 'output', alias: 'O', type: String, description: 'The name of the file to write output to or, in the case of us passing multiple paths to `--input`, the name of the directory to place the generated documentation files.' },
+		{ name: 'output', alias: 'O', type: String, description: 'The name of the file to write output to or, in the case of passing multiple paths to `--input`, (multi-file mode) the name of the directory to place the generated documentation files.' },
 		{ name: 'pasteboard', alias: 'p', type: Boolean, description: '[Reserved] Copy output to pasteboard (clipboard).' },
 		//Config
 		{ name: 'config', alias: 'c', type: Boolean, description: 'Print search paths and configuration values to STDOUT.' },

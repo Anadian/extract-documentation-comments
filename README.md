@@ -5,7 +5,6 @@
 [![npm](https://img.shields.io/npm/v/extract-documentation-comments)](https://www.npmjs.com/package/extract-documentation-comments)
 [![CI](https://github.com/Anadian/extract-documentation-comments/workflows/ci/badge.svg)](https://github.com/Anadian/extract-documentation-comments/actions?query=workflow%3Aci)
 [![Coverage Status](https://coveralls.io/repos/github/Anadian/extract-documentation-comments/badge.svg?branch=main)](https://coveralls.io/github/Anadian/extract-documentation-comments?branch=main)
-![David](https://img.shields.io/david/Anadian/extract-documentation-comments)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 > Simply extract documentation comments from a source file.

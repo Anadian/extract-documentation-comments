@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.12](https://github.com/Anadian/extract-documentation-comments/compare/v0.3.11...v0.3.12) (2022-02-20)
+
+
+### Bug Fixes
+
+* **cli:** Fixed some typoes in the CLI's help text. ([14129df](https://github.com/Anadian/extract-documentation-comments/commit/14129dfabc868998889c829c9c56561a18c7698e))
+
+
+### Chores
+
+* **deps:** bump hosted-git-info from 2.8.8 to 2.8.9 ([f12bb38](https://github.com/Anadian/extract-documentation-comments/commit/f12bb38ca74e8d9d2585dcbc2d98ff2a8b6aa321))
+* **deps:** Updated deps to test Windows CI ([ca53046](https://github.com/Anadian/extract-documentation-comments/commit/ca530463832ba4bb043ecd0ab6ede3a60da9772f))
+
+
+### Continuous Integration
+
+* Rebuilt package-lock.json ([8fdd3c9](https://github.com/Anadian/extract-documentation-comments/commit/8fdd3c9bd483c7aface849938537dd6d299d6d35))
+* windows ci data. ([4dbc7ca](https://github.com/Anadian/extract-documentation-comments/commit/4dbc7ca39b4074797e8142ca5bd2a5f690502498))
+
+
+### Documentation
+
+* Updated README. ([6a35f77](https://github.com/Anadian/extract-documentation-comments/commit/6a35f77f8d06e80156ef747fb8f04444f4bc2ba0))
+
 ### [0.3.11](https://github.com/Anadian/extract-documentation-comments/compare/v0.3.10...v0.3.11) (2021-10-02)
 
 

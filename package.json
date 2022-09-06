@@ -49,6 +49,7 @@
 		"eslint": "^8.23.0",
 		"hjson": "^3.2.2",
 		"npm-check-updates": "^16.1.0",
+		"p-event": "^5.0.1",
 		"standard-version": "^9.5.0"
 	},
 	"dependencies": {

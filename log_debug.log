@@ -1,0 +1,23 @@
+2022-09-06T14:54:59.811Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: Start of execution block.
+2022-09-06T14:54:59.815Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:main_Async:debug: received: [ {}, [length]: [33m1[39m ]
+2022-09-06T14:54:59.816Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:main_Async:error: No input options specified.
+2022-09-06T14:54:59.817Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:main_Async:crit: No input options specified.
+2022-09-06T14:54:59.817Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: End of execution block.
+2022-09-06T14:55:07.654Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: Start of execution block.
+2022-09-06T14:55:07.658Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:getDocumentationStringFromSourceString_Test:error: Failure: success test caught an unexpected error: Error: Path.resolve threw an error: ReferenceError: __dirname is not defined
+
+2022-09-06T14:55:07.659Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:main_Async_Test:crit: Test failed with error: 'Error: Test failed: invalid arg test: 'true' success test: 'Error: Path.resolve threw an error: ReferenceError: __dirname is not defined'
+'
+2022-09-06T14:55:07.659Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: End of execution block.
+2022-09-06T15:00:00.175Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: Start of execution block.
+2022-09-06T15:00:00.180Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:getDocumentationStringFromSourceString_Test:debug: sample_input_path: /test/example-source-file.js
+2022-09-06T15:00:00.180Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:getDocumentationStringFromSourceString_Test:error: Failure: success test caught an unexpected error: Error: FileSystem.readFileSync threw an error: Error: ENOENT: no such file or directory, open '/test/example-source-file.js'
+
+2022-09-06T15:00:00.181Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:main_Async_Test:crit: Test failed with error: 'Error: Test failed: invalid arg test: 'true' success test: 'Error: FileSystem.readFileSync threw an error: Error: ENOENT: no such file or directory, open '/test/example-source-file.js''
+'
+2022-09-06T15:00:00.181Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: End of execution block.
+2022-09-06T15:00:30.729Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: Start of execution block.
+2022-09-06T15:00:30.737Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: End of execution block.
+2022-09-06T15:02:05.919Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: Start of execution block.
+2022-09-06T15:02:05.923Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:getDocumentationStringFromSourceString_Test:debug: sample_input_path: /home/cameron/dev/extract-documentation-comments/test/example-source-file.js
+2022-09-06T15:02:05.968Z extract-documentation-comments:ExtractDocumentationComments:extract-documentation-comments.js:MainExecutionFunction:debug: End of execution block.

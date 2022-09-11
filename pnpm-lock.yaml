@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  application-log-winston-interface: ^3.0.1
+  application-log-winston-interface: ^3.1.0
   ava: ^4.3.3
   c8: ^7.12.0
   command-line-args: ^5.2.1
@@ -18,7 +18,7 @@ specifiers:
   standard-version: ^9.5.0
 
 dependencies:
-  application-log-winston-interface: 3.0.1
+  application-log-winston-interface: 3.1.0
   command-line-args: 5.2.1
   command-line-usage: 6.1.3
   env-paths: 3.0.0
@@ -428,8 +428,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /application-log-winston-interface/3.0.1:
-    resolution: {integrity: sha512-JIKMXV0T2SDAuk3+KJLn5+wJSxZf1igUcFRaDsXXSpS77llwR007gFZU3TfNBJ7g4u5gzxN7gzCavKuF3QvwFg==}
+  /application-log-winston-interface/3.1.0:
+    resolution: {integrity: sha512-406+BZuQ3XbE2cyXP+1vLZL5qnMHJDCcenl8rUh1c3Zl67/FhLvBuOpAkn9h1TPdewehEb6FB1GC6XxjJQFKkA==}
     engines: {node: '>=12'}
     dependencies:
       logform: 2.4.2

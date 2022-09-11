@@ -23,14 +23,7 @@ const PackageMeta = await getPackageMeta( import.meta );
 //##Errors
 
 //#Global Variables
-var Logger = { 
-	log: () => {
-		return null;
-	},
-	setConsoleLogLevel: () => {
-		return null;
-	}
-};
+var Logger = ApplicationLogWinstonInterface.nullLogger;
 /**
 ## Functions
 */

@@ -11,6 +11,9 @@
 	import getPackageMeta from 'simple-package-meta';
 	import GetStream from 'get-stream';
 	import MakeDir from 'make-dir';
+	import * as ApplicationLogWinstonInterface from 'application-log-winston-interface';
+	import CommandLineArgs from 'command-line-args';
+	import CommandLineUsage from 'command-line-usage';
 
 //#Constants
 const FILENAME = 'extract-documentation-comments.js';
@@ -94,7 +97,6 @@ Status:
 | 0.1.7 | Cleaned up. |
 | 0.0.1 | Introduced |
 */
-/* istanbul ignore next */
 function getDocumentationStringFromSourceString_Test(){
 	const FUNCTION_NAME = 'getDocumentationStringFromSourceString_Test';
 	//Variables
@@ -192,7 +194,6 @@ Status:
 | --- | --- |
 | 0.0.1 | Introduced |
 */
-/* istanbul ignore next */
 function getDocumentationStringFromSourceBuffer_Test(){
 	const FUNCTION_NAME = 'getDocumentationStringFromSourceBuffer_Test';
 	//Variables
@@ -301,7 +302,6 @@ Status:
 | --- | --- |
 | 0.0.1 | Introduced |
 */
-/* istanbul ignore next */
 async function main_Async( options = {} ){
 	var arguments_array = Array.from(arguments);
 	var return_error = null;
@@ -460,7 +460,6 @@ Status:
 | --- | --- |
 | 0.0.1 | Introduced |
 */
-/* istanbul ignore next */
 async function main_Async_Test(){
 	const FUNCTION_NAME = 'main_Async_Test';
 	//Variables
@@ -485,9 +484,6 @@ const FUNCTION_NAME = 'MainExecutionFunction';
 	//###Internal
 	//###Standard
 	//###External
-	import * as ApplicationLogWinstonInterface from 'application-log-winston-interface';
-	import CommandLineArgs from 'command-line-args';
-	import CommandLineUsage from 'command-line-usage';
 //Constants
 const OptionDefinitions = [
 	//UI
@@ -518,27 +514,29 @@ var logger = null;
 //Logger
 try{ 
 	MakeDir.sync( PackageMeta.paths.log );
-} catch(error)/* istanbul ignore next */{
+} catch(error)/* c8 ignore start */{
 	console.error('MakeDir.sync threw: %s', error);
-}
+}/* c8 ignore stop */
 try{
+	console.log( PackageMeta.paths.log );
 	logger = ApplicationLogWinstonInterface.initWinstonLogger('debug.log', PackageMeta.paths.log);
+	//console.log( '%o', logger );
 	try{
 		setLogger( logger );
-	} catch(error)/* istanbul ignore next */{
+	} catch(error)/* c8 ignore start */{
 		return_error = new Error(`setLogger threw an error: ${error}`);
 		console.error(return_error);
 	}
-} catch(error)/* istanbul ignore next */{
+} catch(error){
 	return_error = new Error(`ApplicationLogWinstonInterface.initWinstonLogger threw an error: ${error}`);
 	console.error(return_error);
 	//throw return_error;
-}
+}/* c8 ignore stop */
 Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: 'Start of execution block.'});
 //Options
 var Options = CommandLineArgs( OptionDefinitions );
 //Config
-/* istanbul ignore next */
+/* c8 ignore start */
 if( Options.verbose === true ){
 	//Logger.real_transports.console_stderr.level = 'debug';
 	Logger.setConsoleLogLevel( 'debug' );
@@ -561,12 +559,10 @@ if( Options.verbose === true ){
 	}
 }*/
 //Main
-/* istanbul ignore next */
 if( Options.version === true ){
 	console.log(PackageMeta.packageJSON.version);
 	quick_exit = true;
 }
-/* istanbul ignore next */
 if( Options.help === true ){
 	const help_sections_array = [
 		{
@@ -582,17 +578,15 @@ if( Options.help === true ){
 	console.log(help_message);
 	quick_exit = true;
 }
-/* istanbul ignore next */
 if( Options.config === true ){
 	console.log(PackageMeta);
 	quick_exit = true;
-}
+}/* c8 ignore stop */
 if( quick_exit === false || Options['no-quick-exit'] === true ){
-	/* istanbul ignore else */
 	if( Options.test === true ){
 		main_Async_Test();
-	} else{
+	} else/* c8 ignore start */{
 		main_Async( Options );
-	}
+	}/* c8 ignore stop */
 }
 Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: 'End of execution block.'});

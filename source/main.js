@@ -1,5 +1,4 @@
-#!/usr/local/bin/node
-'use strict';
+#!/usr/bin/env node
 /**
 # [extract-documentation-comments.js](source/main.js)
 > Simply extract documentation comments from a source file.
@@ -37,29 +36,29 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 //#Dependencies
 	//##Internal
 	//##Standard
-	const FileSystem = require('fs');
-	const Path = require('path')
-	const Utility = require('util');
-	//const Assert = require('assert');
-	const OperatingSystem = require('os');
+	import FileSystem from 'fs';
+	import Path from 'path';
+	import Utility from 'util';
+	//import Assert from 'assert';
+	import OperatingSystem from 'os';
 	//##External
-	const GetStream = require('get-stream');
-	const MakeDir = require('make-dir');
+	
+	import GetStream from 'get-stream';
+	import MakeDir from 'make-dir';
 	//const Leven = require('leven');
 	//const Globby = require('globby');
 	//const TAP = require('tap');
 
 //#Constants
-const FILENAME = 'extract-documentation-comments.js';
+/*const FILENAME = 'extract-documentation-comments.js';
 const MODULE_NAME = 'ExtractDocumentationComments';
 var PACKAGE_JSON = {};
 var PROCESS_NAME = '';
-/* istanbul ignore else */
 if(require.main === module){
 	PROCESS_NAME = 'extract-documentation-comments';
 } else{
 	PROCESS_NAME = process.argv0;
-}
+}*/
 //##Errors
 
 //#Global Variables

@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  application-log-winston-interface: ^3.0.0
+  application-log-winston-interface: ^3.0.1
   ava: ^4.3.3
   c8: ^7.12.0
   command-line-args: ^5.2.1
@@ -12,13 +12,13 @@ specifiers:
   get-stream: ^6.0.1
   hjson: ^3.2.2
   make-dir: ^3.1.0
-  npm-check-updates: ^16.1.0
+  npm-check-updates: ^16.1.2
   p-event: ^5.0.1
   simple-package-meta: ^0.0.3
   standard-version: ^9.5.0
 
 dependencies:
-  application-log-winston-interface: 3.0.0
+  application-log-winston-interface: 3.0.1
   command-line-args: 5.2.1
   command-line-usage: 6.1.3
   env-paths: 3.0.0
@@ -32,7 +32,7 @@ devDependencies:
   coveralls: 3.1.1
   eslint: 8.23.0
   hjson: 3.2.2
-  npm-check-updates: 16.1.0
+  npm-check-updates: 16.1.2
   p-event: 5.0.1
   standard-version: 9.5.0
 
@@ -428,8 +428,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /application-log-winston-interface/3.0.0:
-    resolution: {integrity: sha512-J3XDnEocVDvEzkb06M+ESHhPO3tueK84OBLidfAiVU6bD9BwK5nwtl9cqFOJYfBog/cnQmJVKCnH1baBfq8c8g==}
+  /application-log-winston-interface/3.0.1:
+    resolution: {integrity: sha512-JIKMXV0T2SDAuk3+KJLn5+wJSxZf1igUcFRaDsXXSpS77llwR007gFZU3TfNBJ7g4u5gzxN7gzCavKuF3QvwFg==}
     engines: {node: '>=12'}
     dependencies:
       logform: 2.4.2
@@ -2909,8 +2909,8 @@ packages:
       npm-normalize-package-bin: 2.0.0
     dev: true
 
-  /npm-check-updates/16.1.0:
-    resolution: {integrity: sha512-0oEuD//2DVCjewNq4u0oJyciT5WRSPAz3B0IDnh8rGunrSXy0vXX17DFeI0XOT28mvUWrBtPbjz2Zptd2wvpNQ==}
+  /npm-check-updates/16.1.2:
+    resolution: {integrity: sha512-6ZnDkrGkQQ+tnCeMXIO7sxdTWwXiodzO02sOtyZzj9HbJqAf4qY0wdmTEkG7wBNggwlIksVxgyjCzSejMdv6qg==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:

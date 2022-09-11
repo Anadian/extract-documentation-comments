@@ -29,12 +29,13 @@ Plus, I found all of the documentation solutions above to be kind of poorly docu
 - It makes zero assumptions about the text between the `/**` and `*/` so you're free to markup the text in any way you want; [Markdown](https://github.github.com/gfm/), [reStructuredText](https://docutils.sourceforge.io/rst.html), XML, whatever and convert it to what you need after the fact. I recommend [PanDoc](https://pandoc.org/index.html) for this.
 - It can easily be finagled to be backwards compatible with any existing source-code documenting solution.
 # Install
-`npm install extract-documentation-comments`
-to install it to a local package or
-`npm install --global extract-documentation-comments`
-to install it globally.
+Using [pnpm](https://pnpm.io/cli/add):
+```sh
+pnpm add --save extract-documentation-comments
+```
+It can, of course, also be installed by [npm](https://docs.npmjs.com/cli/v8/commands/npm-install) or [Yarn](https://yarnpkg.com/getting-started/usage) using the normal methods.
 # Usage
-To use the command-line interface `npx extract-documentation-comments` or just `extract-documentation-comments` if installed globally.
+To use the command-line interface `pnpm extract-documentation-comments` or just `extract-documentation-comments` if installed globally.
 ## CLI
 ```
 extract-documentation-comments
@@ -65,7 +66,7 @@ Options
 ```
 # API
 ```js
-const ExtractDocumentationComments = require('extract-documentation-comments');
+import * as ExtractDocumentationComments from 'extract-documentation-comments';
 ```
 See [API.md](API.md) for full API.
 # Contributing

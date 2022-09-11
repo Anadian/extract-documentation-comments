@@ -2,7 +2,6 @@
 	"name": "extract-documentation-comments",
 	"version": "0.3.12",
 	"description": "Simply extract documentation comments from a source file.",
-	"main": "source/main.js",
 	"scripts": {
 		"test": "ava -v ./source/cli.test.js ./source/lib.test.js",
 		"coverage": "c8 pnpm test",
@@ -61,8 +60,9 @@
 		"make-dir": "^3.1.0",
 		"simple-package-meta": "^0.0.3"
 	},
+	"exports": "./source/lib.js",
 	"bin": {
-		"extract-documentation-comments": "./source/main.js"
+		"extract-documentation-comments": "./source/cli.js"
 	},
 	"engines": {
 		"node": ">=14.8.0"

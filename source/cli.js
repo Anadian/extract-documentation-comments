@@ -542,22 +542,6 @@ if( Options.verbose === true ){
 	Logger.setConsoleLogLevel( 'debug' );
 	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'note', message: `Logger: console_stderr transport log level set to: ${Logger.real_transports.console_stderr.level}`});
 }
-///Load package.json
-/* istanbul ignore next */
-/*try{
-	source_dirname = Path.dirname( module.filename );
-	package_path = Path.join( source_dirname, 'package.json' );
-	PACKAGE_JSON = require(package_path);
-} catch(error){
-	Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `Soft error: ${error}`});
-	try{
-		parent_dirname = Path.dirname( source_dirname );
-		package_path = Path.join( parent_dirname, 'package.json' );
-		PACKAGE_JSON = require(package_path);
-	} catch(error){
-		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `Soft error: ${error}`});
-	}
-}*/
 //Main
 if( Options.version === true ){
 	console.log(PackageMeta.packageJSON.version);

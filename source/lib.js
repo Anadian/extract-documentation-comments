@@ -271,18 +271,18 @@ function getDocumentationStringFromFilePathSync( file_path, options = {} ){
 	try{
 		file_buffer = FileSystem.readFileSync( file_path );
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `file_buffer: ${file_buffer.toString('utf8')}`});
-	} catch(error)/* istanbul ignore next */{
+	} catch(error)/* c8 ignore start */{
 		return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 		throw return_error;
-	}
+	}/* c8 ignore stop */
 	if( file_buffer != null ){
 		try{
 			documentation_string = getDocumentationStringFromSourceBuffer( file_buffer, options );
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `documentation_string: ${documentation_string}`});
-		} catch(error)/* istanbul ignore next */{
+		} catch(error)/* c8 ignore start */{
 			return_error = new Error(`getDocumentationStringFromSourceString threw an error: ${error}`);
 			throw return_error;
-		}
+		}/* c8 ignore stop */
 	}
 	if( documentation_string != null ){
 		_return = documentation_string;

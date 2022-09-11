@@ -38,7 +38,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	//import Assert from 'assert';
 	import OperatingSystem from 'node:os';
 	//##External
-	import nullLogger from 'application-log-winston-interface';
+	import * as ApplicationLogWinstonInterface from 'application-log-winston-interface';
 
 //#Constants
 const FILENAME = 'extract-documentation-comments.js';
@@ -47,7 +47,7 @@ const PROCESS_NAME = 'extract-documentation-comments';
 //##Errors
 
 //#Global Variables
-var Logger = nullLogger;
+var Logger = ApplicationLogWinstonInterface.nullLogger;
 /**
 ## Functions
 */
@@ -70,7 +70,7 @@ Status:
 | --- | --- |
 | 0.0.0 | Introduced |
 */
-function setLogger( logger )js\c0{
+function setLogger( logger )/* c8 ignore start */{
 	var return_error = null;
 	//const FUNCTION_NAME = 'setLogger';
 	//Variables
@@ -93,7 +93,7 @@ function setLogger( logger )js\c0{
 	//Function
 	Logger = logger;
 	//Return
-}js\c1
+}/* c8 ignore stop */
 
 /**
 ### getDocumentationStringFromSourceString
@@ -199,10 +199,10 @@ function getDocumentationStringFromSourceBuffer( source_buffer , options = {} ){
 	if( buffer_string !== '' ){
 		try{
 			_return = getDocumentationStringFromSourceString( buffer_string, options );
-		} catch(error)js\c0{
+		} catch(error)/* c8 ignore start */{
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: `Received and throwing error: ${error}`});
 			throw error;
-		}js\c1
+		}/* c8 ignore stop */
 	} else{
 		return_error = new Error(`'source_buffer.toString()' returned an empty string or a non-string: ${buffer_string}`);
 		return_error.code = 'ERR_INVALID_RETURN_VALUE';

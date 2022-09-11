@@ -14,6 +14,7 @@ specifiers:
   make-dir: ^3.1.0
   npm-check-updates: ^16.1.2
   p-event: ^5.0.1
+  pify: ^6.1.0
   simple-package-meta: ^0.0.3
   standard-version: ^9.5.0
 
@@ -24,6 +25,7 @@ dependencies:
   env-paths: 3.0.0
   get-stream: 6.0.1
   make-dir: 3.1.0
+  pify: 6.1.0
   simple-package-meta: 0.0.3
 
 devDependencies:
@@ -3299,6 +3301,11 @@ packages:
     resolution: {integrity: sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==}
     engines: {node: '>=4'}
     dev: true
+
+  /pify/6.1.0:
+    resolution: {integrity: sha512-KocF8ve28eFjjuBKKGvzOBGzG8ew2OqOOSxTTZhirkzH7h3BI1vyzqlR0qbfcDBve1Yzo3FVlWUAtCRrbVN8Fw==}
+    engines: {node: '>=14.16'}
+    dev: false
 
   /pkg-conf/4.0.0:
     resolution: {integrity: sha512-7dmgi4UY4qk+4mj5Cd8v/GExPo0K+SlY+hulOSdfZ/T6jVH6//y7NtzZo5WrfhDBxuQ0jCa7fLZmNaNh7EWL/w==}

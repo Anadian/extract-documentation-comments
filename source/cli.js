@@ -365,7 +365,8 @@ async function main_Async( options = {} ){
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 			}/* c8 ignore stop */
 		} 
-	} //Single-file mode
+	} 
+	//Single-file mode
 	if( multi_file_mode === false ){
 		///Input
 		if( return_error === null ){
@@ -511,7 +512,7 @@ try{
 	console.error('MakeDir.sync threw: %s', error);
 }/* c8 ignore stop */
 try{
-	console.log( PackageMeta.paths.log );
+	//console.log( PackageMeta.paths.log );
 	logger = ApplicationLogWinstonInterface.initWinstonLogger('debug.log', PackageMeta.paths.log);
 	//console.log( '%o', logger );
 	try{

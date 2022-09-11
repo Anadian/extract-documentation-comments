@@ -65,7 +65,7 @@
 		"extract-documentation-comments": "./source/main.js"
 	},
 	"engines": {
-		"node": ">=12"
+		"node": ">=14.8.0"
 	},
 	"eslintConfig": {
 		"env": {

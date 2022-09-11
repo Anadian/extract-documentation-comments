@@ -4,11 +4,11 @@
 	"description": "Simply extract documentation comments from a source file.",
 	"main": "source/main.js",
 	"scripts": {
-		"test": "ava -v ./source/cli.test.mjs ./source/lib.test.js",
+		"test": "ava -v ./source/cli.test.js ./source/lib.test.js",
 		"coverage": "c8 pnpm test",
 		"coverage-report": "c8 report -r=text-lcov > coverage/lcov.txt",
 		"ci": "pnpm coverage && pnpm coverage-report",
-		"lint": "eslint ./source/main.js",
+		"lint": "eslint ./source/*.js",
 		"generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
 		"update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
 		"update-deps": "npm-check-updates -u",

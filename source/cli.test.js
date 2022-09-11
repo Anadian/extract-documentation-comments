@@ -6,7 +6,7 @@ import * as Pevent from 'p-event';
 
 AVA('CLI:HelpData', async function(t){
 	t.log( t.title );
-	var process_object = ChildProcess.fork( 'source/cli.mjs', ['-vVhc'], { silent: true } );
+	var process_object = ChildProcess.fork( 'source/cli.js', ['-vVhc'], { silent: true } );
 	var actual_stdout = '';
 	var actual_stderr = '';
 	t.plan(1);
@@ -28,7 +28,7 @@ AVA('CLI:HelpData', async function(t){
 });
 AVA('CLI:ClassicUnitTests', async function(t){
 	t.log( t.title );
-	var process_object = ChildProcess.fork( 'source/cli.mjs', ['-vx', '--test'], { silent: true } );
+	var process_object = ChildProcess.fork( 'source/cli.js', ['-vx', '--test'], { silent: true } );
 	var actual_stdout = '';
 	var actual_stderr = '';
 	t.plan(1);
@@ -50,7 +50,7 @@ AVA('CLI:ClassicUnitTests', async function(t){
 });
 AVA('CLI:MultiFileShellGlob', async function(t){
 	t.log( t.title );
-	var process_object = ChildProcess.fork( 'source/cli.mjs', ['-v', '-I', 'test/example-source-file.js', 'test/another-test-file.js', '-O', 'temp_docs'], { silent: true } );
+	var process_object = ChildProcess.fork( 'source/cli.js', ['-v', '-I', 'test/example-source-file.js', 'test/another-test-file.js', '-O', 'temp_docs'], { silent: true } );
 	var actual_stdout = '';
 	var actual_stderr = '';
 	process_object.stdio[1].on('data', function( chunk ){

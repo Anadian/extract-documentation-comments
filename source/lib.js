@@ -38,6 +38,7 @@ Documentation License: [![Creative Commons License](https://i.creativecommons.or
 	//import Assert from 'assert';
 	import OperatingSystem from 'node:os';
 	//##External
+	import nullLogger from 'application-log-winston-interface';
 
 //#Constants
 const FILENAME = 'extract-documentation-comments.js';
@@ -46,14 +47,7 @@ const PROCESS_NAME = 'extract-documentation-comments';
 //##Errors
 
 //#Global Variables
-var Logger = { 
-	log: () => {
-		return null;
-	},
-	setConsoleLogLevel: () => {
-		return null;
-	}
-};
+var Logger = nullLogger;
 /**
 ## Functions
 */
@@ -76,7 +70,7 @@ Status:
 | --- | --- |
 | 0.0.0 | Introduced |
 */
-function setLogger( logger ){
+function setLogger( logger )js\c0{
 	var return_error = null;
 	//const FUNCTION_NAME = 'setLogger';
 	//Variables
@@ -99,7 +93,7 @@ function setLogger( logger ){
 	//Function
 	Logger = logger;
 	//Return
-}
+}js\c1
 
 /**
 ### getDocumentationStringFromSourceString
@@ -205,10 +199,10 @@ function getDocumentationStringFromSourceBuffer( source_buffer , options = {} ){
 	if( buffer_string !== '' ){
 		try{
 			_return = getDocumentationStringFromSourceString( buffer_string, options );
-		} catch(error){
+		} catch(error)js\c0{
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: `Received and throwing error: ${error}`});
 			throw error;
-		}
+		}js\c1
 	} else{
 		return_error = new Error(`'source_buffer.toString()' returned an empty string or a non-string: ${buffer_string}`);
 		return_error.code = 'ERR_INVALID_RETURN_VALUE';

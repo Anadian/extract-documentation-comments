@@ -111,44 +111,44 @@ function getDocumentationStringFromSourceString_Test(){
 	} catch(error){
 		if( error.code === 'ERR_INVALID_ARG_TYPE' ){
 			arg_test = true;
-		} else{
+		} elsejs\c0{
 			arg_test = error;
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: `Failure: invalid arg test: received an unexpected error: ${error}\n`});
-		}
+		}js\c1
 	}
 	///success test
 	try {
 		try{
 			sample_input_path = Path.resolve( PackageMeta.paths.packageDirectory, 'test/example-source-file.js' );
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `sample_input_path: ${sample_input_path}`});
-		} catch(error){
+		} catch(error)js\c0{
 			return_error = new Error(`Path.resolve threw an error: ${error}`);
 			throw return_error;
-		}
+		}js\c1
 		try{
 			sample_input_string = FileSystem.readFileSync( sample_input_path, { encoding: 'utf8', flag: 'r' } );
 			//sample_input_string = readFileSyncBinaryMode( sample_input_path, 'utf8' );
-		} catch(error){
+		} catch(error)js\c0{
 			return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 			throw return_error;
-		}
+		}js\c1
 		try{
 			expected_output_path = Path.resolve( PackageMeta.paths.packageDirectory, 'test/example-source-file-output.txt' );
-		} catch(error){
+		} catch(error)js\c0{
 			return_error = new Error(`Path.resolve threw an error: ${error}`);
 			throw return_error;
-		}
+		}js\c1
 		try{
 			expected_output_string = FileSystem.readFileSync( expected_output_path, { encoding: 'utf8', flag: 'r' } );
 			//expected_output_string = readFileSyncBinaryMode( expected_output_path, 'utf8' );
-		} catch(error){
+		} catch(error)js\c0{
 			return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 			throw return_error;
-		}
+		}js\c1
 		actual_output_string = ExtractDocumentationComments.getDocumentationStringFromSourceString( sample_input_string );
 		if( actual_output_string === expected_output_string ){
 			success_test = true;
-		} else{
+		} elsejs\c0{
 			success_test = new Error(`success test failed: actual output: '${actual_output_string}' didn't match expected output '${expected_output_string}'`);
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: success_test.message});
 			//Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: `Leven difference ${Leven(actual_output_string, expected_output_string)}`});
@@ -157,14 +157,14 @@ function getDocumentationStringFromSourceString_Test(){
 	} catch(error){
 		success_test = error;
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: `Failure: success test caught an unexpected error: ${error}\n`});
-	}
+	}js\c1
 	if( (arg_test === true) && (success_test === true) ){
 		_return = true;
-	} else{
+	} elsejs\c0{
 		_return = false;
 		return_error = new Error(`Test failed: invalid arg test: '${arg_test}' success test: '${success_test}'\n`);
 		throw return_error;
-	}
+	}js\c1
 	//Return
 	return _return;
 }
@@ -212,10 +212,10 @@ function getDocumentationStringFromSourceBuffer_Test(){
 		if( error.code === 'ERR_INVALID_ARG_TYPE' ){
 			arg_test = true;
 			//console.log('arg_test passed.');
-		} else{
+		} elsejs\c0{
 			arg_test = new Error(`Failure: ${test_name}: received an unexpected error: '${error}'`);
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: arg_test.message});
-		}
+		}js\c1
 	}
 	test_name = 'null buffer test';
 	try{
@@ -227,58 +227,58 @@ function getDocumentationStringFromSourceBuffer_Test(){
 		if( error.code === 'ERR_INVALID_RETURN_VALUE' ){
 			null_buffer_test = true;
 			//console.log('null_buffer_test passed.');
-		} else{
+		} elsejs\c0{
 			null_buffer_test = new Error(`Failure: ${test_name}: received an unexpected error: ${error}`);
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: null_buffer_test.message});
-		}
+		}js\c1
 	}
 	test_name = 'success test';
 	try {
 		try{
 			sample_input_path = Path.resolve( PackageMeta.paths.packageDirectory, 'test/example-source-file.js' );
-		} catch(error){
+		} catch(error)js\c0{
 			return_error = new Error(`Path.resolve threw an error: ${error}`);
 			throw return_error;
-		}
+		}js\c1
 		try{
 			sample_input_buffer = FileSystem.readFileSync( sample_input_path );
-		} catch(error){
+		} catch(error)js\c0{
 			return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 			throw return_error;
-		}
+		}js\c1
 		try{
 			expected_output_path = Path.resolve( PackageMeta.paths.packageDirectory, 'test/example-source-file-output.txt' );
-		} catch(error){
+		} catch(error)js\c0{
 			return_error = new Error(`Path.resolve threw an error: ${error}`);
 			throw return_error;
-		}
+		}js\c1
 		try{
 			expected_output_string = FileSystem.readFileSync( expected_output_path, 'utf8' );
-		} catch(error){
+		} catch(error)js\c0{
 			return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 			throw return_error;
-		}
+		}js\c1
 		//input = new Buffer.from(FileSystem.readFileSync(path.resolve(__dirname, '../testFiles/testInput.js')), 'utf8')
 		actual_output_string = ExtractDocumentationComments.getDocumentationStringFromSourceBuffer( sample_input_buffer );
 		if( actual_output_string === expected_output_string ){
 			success_test = true;
 			//console.log('success_test passed');
-		} else{
+		} elsejs\c0{
 			success_test = new Error(`Failure: ${test_name}: actual output '${actual_output_string}' didn't match expected output '${expected_output_string}'`);
 			Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: success_test.message});
 		}
 	} catch(error){
 		success_test = new Error(`Failure: ${test_name}: caught unexpected exception: ${error}`);
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: success_test.message});
-	}
+	}js\c1
 	//Return
 	if( (arg_test === true) && (null_buffer_test === true) && (success_test === true) ){
 		_return = true;
-	} else{
+	} elsejs\c0{
 		return_error = new Error(`Test failed: invalid arg test: '${arg_test}' null buffer test: '${null_buffer_test}' success test: '${success_test}'`);
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 		throw return_error;
-	}
+	}js\c1
 	return _return;
 }
 /**
@@ -338,7 +338,7 @@ async function main_Async( options = {} ){
 										FileSystem.writeFileSync( output_path, output_string, 'utf8' );
 										report_file_object.success = true;
 										report.files.push( report_file_object );
-									} catch(error){
+									} catch(error)js\c0{
 										report_file_object.error = new Error(`FileSystem.writeFileSync threw an error: ${error}`);
 										report.files.push( report_file_object );
 									}
@@ -363,7 +363,7 @@ async function main_Async( options = {} ){
 			} else{
 				return_error = new Error('"options.output" (`--output`) must be specified when using multi-file mode.');
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-			}
+			}js\c1
 		} 
 	} //Single-file mode
 	if( multi_file_mode === false ){
@@ -373,17 +373,17 @@ async function main_Async( options = {} ){
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from STDIN.'});
 				try{
 					input_string = await GetStream( process.stdin, 'utf8' );
-				} catch(error){
+				} catch(error)js\c0{
 					return_error = new Error(`GetStream threw an error: ${error}`);
 					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-				}
+				}js\c1
 			} else if( options.input != null ){
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'info', message: 'Reading input from a file.'});
 				if( typeof(options.input[0]) === 'string' ){
 					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'debug', message: `options.input: '${options.input[0]}'`});
 					try{
 						input_string = FileSystem.readFileSync( options.input[0], 'utf8' );
-					} catch(error){
+					} catch(error)js\c0{
 						return_error = new Error(`FileSystem.readFileSync threw an error: ${error}`);
 						Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 					}
@@ -394,21 +394,21 @@ async function main_Async( options = {} ){
 			} else{
 				return_error = new Error('No input options specified.');
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-			}
+			}js\c1
 		}
 		///Transform
 		if( return_error === null ){
 			if( input_string !== '' && typeof(input_string) === 'string' ){
 				try{
 					output_string = ExtractDocumentationComments.getDocumentationStringFromSourceString( input_string, options );
-				} catch(error){
+				} catch(error)js\c0{
 					return_error = new Error(`getDocumentationStringFromSourceString threw an error: ${error}`);
 					Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
 				}
 			} else{
 				return_error = new Error('input_string is either null or not a string.');
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-			}
+			}js\c1
 		}
 		///Output
 		if( return_error === null ){
@@ -416,28 +416,28 @@ async function main_Async( options = {} ){
 				if( options.output != null && typeof(output_string) === 'string' ){
 					try{
 						FileSystem.writeFileSync( options.output, output_string, 'utf8' );
-					} catch(error){
+					} catch(error)js\c0{
 						return_error = new Error(`FileSystem.writeFileSync threw an error: ${error}`);
 						Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-					}
+					}js\c1
 				} else{
 					if( options.stdout !== true ){
 						Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'warn', message: 'No output options specified; defaulting to STDOUT.'});
 					}
 					console.log(output_string);
 				}
-			} else{
+			} elsejs\c0{
 				return_error = new Error('"output_string" is either null or not a string.');
 				Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'error', message: return_error.message});
-			}
+			}js\c1
 		}
 	}
 
 	//Return
-	if( return_error !== null ){
+	if( return_error !== null )js\c0{
 		process.exitCode = 1;
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'crit', message: return_error.message});
-	}
+	}js\c1
 }
 /**
 ### main_Async_Test (private)
@@ -464,10 +464,10 @@ async function main_Async_Test(){
 		getDocumentationStringFromSourceString_Test();
 		console.log('buffer');
 		getDocumentationStringFromSourceBuffer_Test();
-	} catch(error){
+	} catch(error)js\c0{
 		Logger.log({process: PROCESS_NAME, module: MODULE_NAME, file: FILENAME, function: FUNCTION_NAME, level: 'crit', message: `Test failed with error: '${error}'`});
 		process.exitCode = 4;
-	}
+	}js\c1
 	//Return
 	return _return;
 }

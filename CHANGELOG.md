@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/Anadian/extract-documentation-comments/compare/v0.3.12...v0.4.0) (2022-09-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* Requires Node 14.8 or higher.
+
+### Bug Fixes
+
+* Logger issues. ([8473d4d](https://github.com/Anadian/extract-documentation-comments/commit/8473d4d5faf69c327607328b43c79487855082c8))
+
+
+### Refactoring
+
+* Requires Node 14.8 or higher. ([92faf59](https://github.com/Anadian/extract-documentation-comments/commit/92faf59dab8b188bf07c6c301be028dffd6ca5ff))
+
+
+### Tests
+
+* Fixed incorrect file names. ([0527818](https://github.com/Anadian/extract-documentation-comments/commit/052781870c6e8ce4b9e3eb0152a1dbf2a5505e03))
+* Test harness now working with AVA v4 ([28ac3c5](https://github.com/Anadian/extract-documentation-comments/commit/28ac3c57c44c149926d6b76b1f397f2cd34f4258))
+
+
+### Documentation
+
+* Updated docs. ([eb726b2](https://github.com/Anadian/extract-documentation-comments/commit/eb726b2e31ed85e5d005730bc1ae56e5ba24a628))
+
+
+### Continuous Integration
+
+* Improved directives. ([ad456b7](https://github.com/Anadian/extract-documentation-comments/commit/ad456b76857f66cb259b3359b8a2beff26201872))
+* Improved test coverage. ([bb525e5](https://github.com/Anadian/extract-documentation-comments/commit/bb525e5ee6a296d6d4a18ac130997b84f0f33716))
+
+
+### Chores
+
+* Cleaned up. ([0390336](https://github.com/Anadian/extract-documentation-comments/commit/03903360c506af212409928eb98b3aeb5e3d7bfa))
+* Last dependency update before release. ([1cb0d8b](https://github.com/Anadian/extract-documentation-comments/commit/1cb0d8bf6d418743704b24a7ac16f55cdcecbde5))
+
 ### [0.3.12](https://github.com/Anadian/extract-documentation-comments/compare/v0.3.11...v0.3.12) (2022-02-20)
 
 

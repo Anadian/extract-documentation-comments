@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/Anadian/extract-documentation-comments/compare/v0.4.0...v0.4.1) (2023-08-28)
+
+
+### Chores
+
+* **deps:** Updated deps. ([3a414c3](https://github.com/Anadian/extract-documentation-comments/commit/3a414c3d6a43320398cef96317366f4f44c6a73f))
+* Updated config. ([eaf4c73](https://github.com/Anadian/extract-documentation-comments/commit/eaf4c733665f1940d0f986920eba682af5c9c077))
+
 ## [0.4.0](https://github.com/Anadian/extract-documentation-comments/compare/v0.3.12...v0.4.0) (2022-09-20)
 
 

@@ -41,7 +41,7 @@
 					if: "${{ matrix.node > 16 || matrix.node == 'latest' }}"
 				},
 				{
-					run: 'pnpm install'
+					run: 'pnpm install --no-frozen-lockfile'
 				},
 				{
 					run: 'pnpm test'
@@ -67,7 +67,7 @@
 					},
 				},
 				{
-					run: 'pnpm install'
+					run: 'pnpm install --no-frozen-lockfile'
 				},
 				{
 					run: 'pnpm run ci'

@@ -9,7 +9,7 @@
 		"ci": "pnpm coverage && pnpm coverage-report",
 		"lint": "eslint ./source/*.js",
 		"generate-docs": "extract-documentation-comments -I source/main.js -O API.md",
-		"update-config": "hjson -j ci/github-actions.hjson | json2yaml --preserve-key-order -o .github/workflows/ci.yml",
+		"update-config": "hjson -j ci/github-actions.hjson | json2yaml -o .github/workflows/ci.yml",
 		"update-deps": "npm-check-updates -u",
 		"release": "standard-version",
 		"publish-release": "git push --follow-tags origin main && pnpm publish"

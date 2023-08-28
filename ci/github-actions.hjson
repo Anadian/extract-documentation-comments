@@ -6,7 +6,7 @@
 			strategy: {
 				matrix: {
 					os: ['ubuntu-latest', 'macos-latest', 'windows-latest'],
-					node: [ '14', '16', '18', 'latest' ]
+					node: [ '14', '16', '18', '20', 'latest' ]
 				}
 			},
 			name: 'source-${{matrix.os}}-node-${{matrix.node}}',
@@ -29,7 +29,7 @@
 				{
 					uses: 'pnpm/action-setup@v2.2.2',
 					with: {
-						version: '7'
+						version: '8'
 					},
 					if: "${{ matrix.node >= 14 || matrix.node == 'latest' }}"
 				},
@@ -56,14 +56,14 @@
 				{
 					uses: 'pnpm/action-setup@v2.2.2',
 					with: {
-						version: '7'
+						version: '8'
 					},
 				},
 				{
 					run: 'pnpm install'
 				},
 				{
-					run: 'pnpm ci'
+					run: 'pnpm run ci'
 				},
 				{
 					uses: 'coverallsapp/github-action@master',

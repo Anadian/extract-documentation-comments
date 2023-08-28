@@ -23,14 +23,18 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: ${{matrix.node}}
-    - uses: pnpm/action-setup@v2.2.2
+    - uses: pnpm/action-setup@v2.4.0
       with:
         version: '6.10'
-      if: ${{ matrix.node < 14 }}
-    - uses: pnpm/action-setup@v2.2.2
+      if: ${{ matrix.node == 14 }}
+    - uses: pnpm/action-setup@v2.4.0
+      with:
+        version: '7'
+      if: ${{ matrix.node == 16 || matrix.node == 'latest' }}
+    - uses: pnpm/action-setup@v2.4.0
       with:
         version: '8'
-      if: ${{ matrix.node >= 14 || matrix.node == 'latest' }}
+      if: ${{ matrix.node > 16 || matrix.node == 'latest' }}
     - run: pnpm install
     - run: pnpm test
   coverage:
@@ -42,7 +46,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: latest
-    - uses: pnpm/action-setup@v2.2.2
+    - uses: pnpm/action-setup@v2.4.0
       with:
         version: '8'
     - run: pnpm install

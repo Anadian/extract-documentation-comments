@@ -1,6 +1,6 @@
 {
 	"name": "extract-documentation-comments",
-	"version": "0.4.1",
+	"version": "0.4.2",
 	"description": "Simply extract documentation comments from a source file.",
 	"scripts": {
 		"test": "ava -v ./source/cli.test.js ./source/lib.test.js",
